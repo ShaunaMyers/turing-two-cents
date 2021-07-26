@@ -1,4 +1,8 @@
 .tip-card {
-  height: 10em;
-  width: 10em;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 20em;
+  padding: 5%;
+  /* margin: 5%; */
+  width: 20em;
 }
