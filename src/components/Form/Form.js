@@ -20,7 +20,7 @@ const Form = ({ handleAddTip }) => {
 
     const onAddTip = (e) => {
         e.preventDefault();
-        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: Date.now(), id: Math.random()})
+        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: event.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' }), id: Math.random() })
         clearInputs();
     }
 
