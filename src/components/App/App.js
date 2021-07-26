@@ -15,7 +15,6 @@ const App = () => {
       <h1>HI WE EXIST</h1>
     </main>
   )
-
 };
 
 export default App
