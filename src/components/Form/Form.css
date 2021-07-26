@@ -5,10 +5,17 @@ form {
 }
 
 input {
-  margin: 0.4%;
+  height: 20px;
+  margin: 0.7%;
+  width: 30%;
 }
 
 button {
   font-size: 17px;
-  margin: 0.4%;
+  margin: 0.7%;
+}
+
+select {
+  height: 30px;
+  width: 75px;
 }

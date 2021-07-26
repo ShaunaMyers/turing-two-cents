@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getTips } from '../../ApiCalls'
-import TipJar from '../TipJar/TipJar'
-import Form from '../Form/Form'
-
+import { getTips } from '../../ApiCalls';
+import TipJar from '../TipJar/TipJar';
+import Form from '../Form/Form';
+import './App.css';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
