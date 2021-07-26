@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState }from 'react';
 
 const Form = () => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+
     return(
         <form>
             <input type="text" placeholder="Tip Title"/>
