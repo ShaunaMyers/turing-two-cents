@@ -5,7 +5,7 @@ const Tip = ({ id, title, description, mod, upvotes, date}) => {
   return (
     <article className='tip-card'>
       <h2>{title}</h2>
-      <p>{description}</p>
+      <p className="description">{description}</p>
       <p>{mod}</p>
       <p>{upvotes}</p>
       <p>{date}</p>
