@@ -18,8 +18,9 @@ const Form = ({ handleAddTip }) => {
         console.log(mod, "THIS IS OUR MOD");
     }
 
-    const onAddTip = () => {
-        handleAddTip({ title: title, description: description, mod: mod, date: Date.now() })
+    const onAddTip = (e) => {
+        e.preventDefault();
+        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: Date.now() })
     }
 
     return(
