@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getTips } from '../../ApiCalls'
 import TipJar from '../TipJar/TipJar'
+import Form from '../Form/Form'
 
 
 const App = () => {
@@ -10,9 +11,14 @@ const App = () => {
     getTips().then(data => setAdvice(data.rows))
   }, [])
 
+  const handleAddTip = (newAdvice) => {
+    setAdvice([...advice, newAdvice])
+  }
+
   return (
     <main className='main'>
       <header><h1>HI WE EXIST</h1></header>
+      <Form handleAddTip={handleAddTip}/>
       <TipJar tips={ advice } />
     </main>
   )
