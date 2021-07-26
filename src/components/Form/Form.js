@@ -20,10 +20,11 @@ const Form = ({ handleAddTip }) => {
 
     const onAddTip = (e) => {
         e.preventDefault();
+
         const date = new Date(Date.now());
-        const formattedDate = date.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })   
-        console.log(formattedDate, ' :formattedDate in onAddTip <<<<');
-        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: formattedDate, id: Math.random() })
+        const formattedDate = date.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
+
+        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: formattedDate, id: Math.random() });
         clearInputs();
     }
 
