@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTips } from '../../ApiCalls';
+import { getTips, addTip } from '../../ApiCalls';
 import TipJar from '../TipJar/TipJar';
 import Form from '../Form/Form';
 import './App.css';
@@ -11,8 +11,9 @@ const App = () => {
     getTips().then(data => setAdvice(data.rows))
   }, [])
 
-  const handleAddTip = (newAdvice) => {
-    setAdvice([...advice, newAdvice])
+  const handleAddTip = (newTip) => {
+    setAdvice([...advice, newTip])
+    addTip(newTip)
   }
 
   return (

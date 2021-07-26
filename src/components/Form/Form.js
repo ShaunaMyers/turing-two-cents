@@ -21,7 +21,11 @@ const Form = ({ handleAddTip }) => {
 
     const onAddTip = (e) => {
         e.preventDefault();
-        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: Date.now() })
+
+        const date = new Date(Date.now()).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
+        // const formattedDate = date.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
+
+        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: date, id: Math.random() });
         clearInputs();
     }
 
