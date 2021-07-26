@@ -19,7 +19,7 @@ const Form = ({ handleAddTip }) => {
     }
 
     const onAddTip = () => {
-        handleAddTip({ title: title, description: description, mod: mod})
+        handleAddTip({ title: title, description: description, mod: mod, date: Date.now() })
     }
 
     return(
