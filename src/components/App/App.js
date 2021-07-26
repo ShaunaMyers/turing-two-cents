@@ -8,11 +8,17 @@ const App = () => {
   
   //function to call and set the state to the apicall
 
+  // .then(data = data => { 
+  //   this.setState({advice})
+  // })
   
+  // const removeCard = (id) => {
+  //   let filteredCards = cards.filter(card => card.id !== id);
+  //   setCards(filteredCards);
+  // }
 
   useEffect(() => {
-    console.log('this is test toseee useeffect method');
-    getTips()
+    getTips().then(data => setAdvice(data))
   }, [])
 
   return (
