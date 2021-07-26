@@ -11,10 +11,14 @@ const App = () => {
     getTips().then(data => setAdvice(data.rows))
   }, [])
 
+  const handleAddTip = (newAdvice) => {
+    setAdvice([...advice, newAdvice])
+  }
+
   return (
     <main className='main'>
       <header><h1>HI WE EXIST</h1></header>
-      <Form />
+      <Form handleAddTip={handleAddTip}/>
       <TipJar tips={ advice } />
     </main>
   )
