@@ -4,10 +4,12 @@ const Form = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
+
+
     return(
         <form>
-            <input type="text" placeholder="Tip Title"/>
-            <input type="text" placeholder="Description"/>
+            <input onChange={handleTitle} type="text" placeholder="Tip Title"/>
+            <input onChange={handleDescription} type="text" placeholder="Description"/>
             <select>
                 <option value="1">Mod 1</option>
                 <option value="2">Mod 2</option>
