@@ -3,7 +3,7 @@ import React, { useState }from 'react';
 const Form = ({ handleAddTip }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [mod, setMod] = useState(0);
+    const [mod, setMod] = useState(1);
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
@@ -21,6 +21,13 @@ const Form = ({ handleAddTip }) => {
     const onAddTip = (e) => {
         e.preventDefault();
         handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: Date.now() })
+        clearInputs();
+    }
+
+    const clearInputs = () => {
+        setTitle('');
+        setDescription('');
+        setMod(1);
     }
 
     return(
@@ -35,7 +42,9 @@ const Form = ({ handleAddTip }) => {
                 <option value="3">Mod 3</option>
                 <option value="4">Mod 4</option>
             </select>
-            <button onClick={onAddTip}>Submit</button>
+            <button onClick={
+                onAddTip
+            }>Submit</button>
         </form>
     )
 }
