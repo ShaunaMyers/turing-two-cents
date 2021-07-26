@@ -3,3 +3,12 @@ form {
   flex-direction: column;
   align-items: center;
 }
+
+input {
+  margin: 0.4%;
+}
+
+button {
+  font-size: 17px;
+  margin: 0.4%;
+}
