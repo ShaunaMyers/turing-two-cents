@@ -1,6 +1,6 @@
 export const getTips = async () => {
   const url = 'https://turingtwocentapi.herokuapp.com/'
-  setError('')
+  // setError('')
 
   try {
     const response = await fetch(url)
@@ -8,6 +8,6 @@ export const getTips = async () => {
     // setPets(tips)
     console.log(tips, "<<<L>> tips inside apicalls")
   } catch(error) {
-    setError(error.message)
+    // setError(error.message)
   }
 }
