@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTips } from '../../ApiCalls'
+import { getTips, addTip } from '../../ApiCalls'
 import TipJar from '../TipJar/TipJar'
 import Form from '../Form/Form'
 
@@ -16,9 +16,9 @@ const App = () => {
 //get request for only the ID of the newly created adviceTip 
 //previousState
 
-  const handleAddTip = (newAdvice) => {
-    setAdvice([...advice, newAdvice])
-    // addTip()
+  const handleAddTip = (newTip) => {
+    setAdvice([...advice, newTip])
+    addTip(newTip)
   }
 
   return (
