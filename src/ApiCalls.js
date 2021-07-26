@@ -3,3 +3,7 @@ export const getTips = () => {
     .then(response => response.json())
     .catch(err => console.log(err))
 }
+
+// export const addTip = () => {
+//   return 
+// }
