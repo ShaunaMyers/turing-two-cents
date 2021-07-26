@@ -10,11 +10,6 @@ const App = () => {
   useEffect(() => {
     getTips().then(data => setAdvice(data.rows))
   }, [])
-//when we submit new adviceTip, need to assign a new ID through api database
-//when post is sent to api Database, it'll assign an unique id
-//once posted into the api, we need to do a PATCH to update only that part of the [...this.state]
-//get request for only the ID of the newly created adviceTip 
-//previousState
 
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
