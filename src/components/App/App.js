@@ -9,7 +9,7 @@ import './App.css';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState('');
+  const [loading, setLoading] = useState('Loading tips...');
 
   // useEffect(() => {
   //   getTips()
@@ -19,11 +19,9 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       setError('');
-      setLoading('Loading tips...');
  
       try {
         const result = await getTips();
- 
         setAdvice(result.rows);
       } catch (error) {
         setError('Oops, problem loading tips. Please refresh the page.');
