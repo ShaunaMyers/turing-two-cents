@@ -8,6 +8,7 @@ import './App.css';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState('');
 
   // useEffect(() => {
   //   getTips()
@@ -17,7 +18,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       setError('');
-      // setLoading();
+      setLoading('Loading tips...');
  
       try {
         const result = await getTips();
@@ -27,11 +28,11 @@ const App = () => {
         setError('Oops, problem loading tips. Please refresh the page.');
       }
  
-      // setLoading();
+      setLoading('');
     };
  
     fetchData();
-  }, []);
+  });
 
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
@@ -42,6 +43,8 @@ const App = () => {
     <main className='main'>
       <header><h1>Turing Tip Jar</h1></header>
       <Form handleAddTip={handleAddTip}/>
+      {loading ? <Loader loading={loading}/> : 
+      <TipJar tips={ advice } />}
       {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
       } 
