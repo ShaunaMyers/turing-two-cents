@@ -38,6 +38,14 @@ const App = () => {
     addTip(newTip)
   }
 
+  // const validateInputValues = (title, description) => {
+  //   if (!title && !description) {
+  //     setError('Please fill out title & description fields.')
+  //   } else {
+  //     setError('')
+  //   }
+  // } 
+
   return (
     <main className='main'>
       <header><h1>Turing Tip Jar</h1></header>
