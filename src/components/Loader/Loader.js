@@ -1,10 +1,10 @@
 import React from 'react';
 import './Loader.css';
 
-const Loader = ({ error }) => {
+const Loader = ({ loading }) => {
     return (
         <section className="loader">
-            <p>{error}</p>
+            <p>{loading}</p>
         </section>
     )
 }
