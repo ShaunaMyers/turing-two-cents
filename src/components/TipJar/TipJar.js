@@ -4,9 +4,7 @@ import TipCard from '../TipCard/TipCard'
 import './TipJar.css';
 
 const TipJar = ({ tips }) => {
-  console.log(tips,' :tips inside tipjar.jcs <<<<<')
   const allTips = tips.map(tip => {
-    console.log(tip.id, ' :tips.id inside TipJar.js');
     return (
       <TipCard 
         id={tip.id}
