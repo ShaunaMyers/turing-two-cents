@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getTips, addTip } from '../../ApiCalls';
 import TipJar from '../TipJar/TipJar';
 import Form from '../Form/Form';
+import Error from '../Error/Error';
 import './App.css';
 
 const App = () => {
