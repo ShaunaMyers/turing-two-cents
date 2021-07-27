@@ -6,6 +6,7 @@ import './App.css';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     getTips().then(data => setAdvice(data.rows))
