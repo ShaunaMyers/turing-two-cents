@@ -29,7 +29,7 @@ const App = () => {
       // setLoading();
     };
  
-    console.log(fetchData());
+    fetchData();
   }, []);
 
   const handleAddTip = (newTip) => {
@@ -41,7 +41,9 @@ const App = () => {
     <main className='main'>
       <header><h1>Turing Tip Jar</h1></header>
       <Form handleAddTip={handleAddTip}/>
+      {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
+      } 
     </main>
   )
 };
