@@ -9,7 +9,6 @@ import './App.css';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
-  // const [loading, setLoading] = useState('Loading tips...');
 
   // useEffect(() => {
   //   getTips()
@@ -27,7 +26,6 @@ const App = () => {
         setError('Oops, problem loading tips. Please refresh the page.');
       }
  
-      // setLoading('');
     };
  
     fetchData();
@@ -50,7 +48,7 @@ const App = () => {
     <main className='main'>
       <header><h1>Turing Tip Jar</h1></header>
       <Form handleAddTip={handleAddTip}/>
-      {!advice.length ? <Loader/> : 
+      {!advice.length && !error ? <Loader/> : 
       <TipJar tips={ advice } />}
       {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
