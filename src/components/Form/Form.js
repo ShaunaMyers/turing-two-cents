@@ -26,6 +26,7 @@ const Form = ({ handleAddTip }) => {
         // const formattedDate = date.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
 
         handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: date, id: Math.random() });
+        // validateInputValues(title, description);
         clearInputs();
     }
 
