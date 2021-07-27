@@ -8,9 +8,29 @@ const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
 
+  // useEffect(() => {
+  //   getTips()
+  //   .then(data => setAdvice(data.rows))
+  // }, [])
+
   useEffect(() => {
-    getTips().then(data => setAdvice(data.rows))
-  }, [])
+    const fetchData = async () => {
+      setError('');
+      // setLoading();
+ 
+      try {
+        const result = await getTips();
+ 
+        setAdvice(result.rows);
+      } catch (error) {
+        setError('Oops, problem loading tips. Please refresh the page.');
+      }
+ 
+      // setLoading();
+    };
+ 
+    console.log(fetchData());
+  }, []);
 
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
