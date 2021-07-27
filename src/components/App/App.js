@@ -3,6 +3,7 @@ import { getTips, addTip } from '../../ApiCalls';
 import TipJar from '../TipJar/TipJar';
 import Form from '../Form/Form';
 import Error from '../Error/Error';
+import Loader from '../Loader/Loader';
 import './App.css';
 
 const App = () => {
