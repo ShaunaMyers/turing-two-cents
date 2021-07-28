@@ -12,7 +12,7 @@ const TipJar = ({ tips }) => {
         title={tip.title}
         description={tip.description}
         mod={tip.mod}
-        upvotes={tip.upvotes}
+        rating={tip.rating}
         date={tip.date}
       />
     )
