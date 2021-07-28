@@ -3,7 +3,7 @@ import React from 'react';
 import TipCard from '../TipCard/TipCard'
 import './TipJar.css';
 
-const TipJar = ({ tips }) => {
+const TipJar = ({ tips, handleDelete }) => {
   const allTips = tips.map(tip => {
     return (
       <TipCard 
@@ -14,6 +14,7 @@ const TipJar = ({ tips }) => {
         mod={tip.mod}
         rating={tip.rating}
         date={tip.date}
+        handleDelete={handleDelete}
       />
     )
   });
