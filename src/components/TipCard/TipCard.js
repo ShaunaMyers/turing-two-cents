@@ -1,7 +1,7 @@
 import React from 'react';
 import './TipCard.css'
 
-const Tip = ({ id, title, description, mod, rating, date}) => {
+const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
   return (
     <article className='tip-card'>
       <h2>{title}</h2>
@@ -9,6 +9,7 @@ const Tip = ({ id, title, description, mod, rating, date}) => {
       <p>{mod}</p>
       <p>{rating}</p>
       <p>{date}</p>
+      <button onClick={(e) => {handleDelete(id)}} className='delete'>Delete</button>
     </article>
   )
 }
