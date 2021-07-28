@@ -67,6 +67,12 @@ const App = () => {
           )
 
         }}/>
+
+        <Route path='/' render={() => 
+          <Error error={'404 Not Found'} />
+        }/>
+
+
         {/* {
         
       {error ? <Error error={error} /> :
