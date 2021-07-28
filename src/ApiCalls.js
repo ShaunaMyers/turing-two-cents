@@ -15,3 +15,15 @@ export const addTip = (newTip) => {
   .then(response => response.json())
   .catch(err => console.log(err))
 };
+
+export const deleteTip = (id) => {
+  return fetch('https://turingtwocentapi.herokuapp.com/', {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(id)
+  })
+  .then(response => response.json())
+  .catch(err => console.log(err))
+};
