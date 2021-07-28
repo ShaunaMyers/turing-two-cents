@@ -35,7 +35,7 @@ const App = () => {
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
     addTip(newTip)
-  }
+  }    
 
   // const validateInputValues = (title, description) => {
   //   if (!title && !description) {
@@ -44,6 +44,7 @@ const App = () => {
   //     setError('')
   //   }
   // } 
+
 
   return (
     <main className='main'>
@@ -63,13 +64,19 @@ const App = () => {
           )
           
         }}/>
-        {/* <Route exact path='/' render={() => {
-          
+        <Route exact path='/module/:num' render={({match}) => {
+          let selectedMod =  parseInt(match.params.num)
+          let filtered = advice.filter(tip => tip.mod === selectedMod)
+          return (
+            <TipJar tips={filtered}/>
+          )
+
         }}/>
+        {/* {
         
       {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
-      }  */}
+      }  */} 
 
 
 
