@@ -45,5 +45,6 @@ const Form = ({ handleAddTip, validateInputs }) => {
 export default Form;
 
 Form.propTypes = {
-    
+    handleAddTip: PropTypes.func,
+    validateInputs: PropTypes.func
   };
