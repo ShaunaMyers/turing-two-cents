@@ -46,5 +46,8 @@ export default Form;
 
 Form.propTypes = {
     handleAddTip: PropTypes.func,
-    validateInputs: PropTypes.func
+    validateInputs: PropTypes.func,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    mod: PropTypes.number
   };
