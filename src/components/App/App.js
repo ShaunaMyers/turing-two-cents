@@ -36,7 +36,7 @@ const App = () => {
     addTip(newTip)
   }
 
-  const validateInputValues = (title, description) => {
+  const validateInputs = (title, description) => {
     if (!title && !description) {
       setError('Please fill out title & description fields.')
     } else {
@@ -47,7 +47,7 @@ const App = () => {
   return (
     <main className='main'>
       <header><h1>Turing Tip Jar</h1></header>
-      <Form handleAddTip={handleAddTip}/>
+      <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {!advice.length && !error ? <Loader/> : 
       <TipJar tips={ advice } />}
       {error ? <Error error={error} /> :
