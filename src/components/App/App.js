@@ -57,7 +57,6 @@ const App = () => {
             !advice.length && !error ? <Loader/> : 
             <TipJar tips={ advice } />
           )
-          
         }}/>
         <Route exact path='/module/:num' render={({match}) => {
           let selectedMod =  parseInt(match.params.num)
@@ -65,22 +64,15 @@ const App = () => {
           return (
             <TipJar tips={filtered}/>
           )
-
         }}/>
-
         <Route path='/' render={() => 
           <Error error={'404 Not Found'} />
         }/>
-
-
         {/* {
         
       {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
       }  */} 
-
-
-
       </Switch>
     </main>
   )
