@@ -1,5 +1,6 @@
 import React from 'react';
-import './TipCard.css'
+import './TipCard.css';
+import PropTypes from 'prop-types';
 
 const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
   return (
@@ -15,3 +16,4 @@ const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
 }
 
 export default Tip;
+
