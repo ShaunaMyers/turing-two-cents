@@ -1,4 +1,3 @@
-import { description } from 'commander';
 import React from 'react';
 import TipCard from '../TipCard/TipCard'
 import './TipJar.css';
@@ -8,7 +7,6 @@ const TipJar = ({ tips, handleDelete }) => {
   const miliSecTips = tips.map(tip => { 
     return { ...tip, date: Date.parse(tip.date) }
   }).sort((a, b) => b.date - a.date)
-  // const sortedMiliTips = miliSecTips.sort((a, b) => b.date - a.date);
 
   const formatDate = (date) => {
     return new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })
