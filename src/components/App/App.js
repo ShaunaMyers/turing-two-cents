@@ -38,6 +38,16 @@ const App = () => {
     setError('')
   } 
 
+  const evaluateLoaderAndError = () => {
+    if (error) {
+      return <Error error={error} />
+    } else if (!advice.length && !error) {
+       return <Loader/>
+    } else {
+      return <TipJar tips={ advice } />
+    }
+
+  }
 
   return (
     <main className='main'>
@@ -55,10 +65,6 @@ const App = () => {
         <Route exact path='/' render={() => {
           return (
             evaluateLoaderAndError()
-            // error ? <Error error={error} /> :
-            // <TipJar tips={ advice } />
-            // !advice.length ? !error ? <Loader/> : 
-            // <TipJar tips={ advice } />
           )
         }}/>
         <Route exact path='/module/:num' render={({match}) => {
