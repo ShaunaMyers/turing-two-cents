@@ -1,32 +1,20 @@
 import React, { useState }from 'react';
 import './Form.css';
 
-const Form = ({ handleAddTip }) => {
+const Form = ({ handleAddTip, validateInputs }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
-
-    // const handleTitle = (e) => {
-    //     setTitle(e.target.value);
-    // }
-
-    // const handleDescription = (e) => {
-    //     setDescription(e.target.value);
-    // }
-
-    // const handleMod = (e) => {
-    //     setMod(e.target.value);
-    //     console.log(mod, "THIS IS OUR MOD");
-    // }
 
     const onAddTip = (e) => {
         e.preventDefault();
 
         const date = new Date(Date.now()).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
         // const formattedDate = date.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
-
-        handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: date, id: Math.random() });
-        // validateInputValues(title, description);
+        if (title && description) {
+            handleAddTip({ title: title, description: description, mod: mod, upvotes: 0, date: date, id: Math.random() });
+        }
+        validateInputs(title, description);
         clearInputs();
     }
 
