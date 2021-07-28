@@ -12,9 +12,6 @@ h1 {
   font-size: 45px;
 }
 
-h1:hover {
-}
-
 div {
   display: flex;
   justify-content: center;
@@ -29,6 +26,11 @@ div {
   margin-bottom: 20%;
   padding: 12px;
   width: 130px;
+}
+
+.mod-button:hover {
+  color: white;
+  cursor: pointer;
 }
 
 a {

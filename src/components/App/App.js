@@ -53,18 +53,20 @@ const App = () => {
     <main className='main'>
       <header>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
-        <NavLink to='/module/1' activeClassName='nav-button'>
-          <button className="mod-button">Module 1</button>
-        </NavLink>
-        <NavLink to='/module/2' activeClassName='nav-button'>
-          <button className="mod-button">Module 2</button>
-        </NavLink>
-        <NavLink to='/module/3' activeClassName='nav-button'>
-          <button className="mod-button">Module 3</button>
-        </NavLink>
-        <NavLink to='/module/4' activeClassName='nav-button'>
-          <button className="mod-button">Module 4</button>
-        </NavLink>
+        <div>
+          <NavLink to='/module/1' activeClassName='nav-button'>
+            <button className="mod-button">Module 1</button>
+          </NavLink>
+          <NavLink to='/module/2' activeClassName='nav-button'>
+            <button className="mod-button">Module 2</button>
+          </NavLink>
+          <NavLink to='/module/3' activeClassName='nav-button'>
+            <button className="mod-button">Module 3</button>
+          </NavLink>
+          <NavLink to='/module/4' activeClassName='nav-button'>
+            <button className="mod-button">Module 4</button>
+          </NavLink>
+        </div>
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {error === 'Please fill out title & description fields.' 
