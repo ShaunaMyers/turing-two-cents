@@ -95,5 +95,6 @@ const App = () => {
 export default App
 
 App.propTypes = {
-  advice: PropTypes.array
+  advice: PropTypes.array,
+  error: PropTypes.string
 };
