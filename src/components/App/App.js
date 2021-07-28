@@ -50,7 +50,8 @@ const App = () => {
     <main className='main'>
       <header><h1>Turing Tip Jar</h1></header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
-      {error === 'Please fill out title & description fields.' && <Error error={error}/>}
+      {error === 'Please fill out title & description fields.' 
+      && <Error error={error}/>}
       {!advice.length && !error ? <Loader/> : 
       <TipJar tips={ advice } />}
       {error ? <Error error={error} /> :
