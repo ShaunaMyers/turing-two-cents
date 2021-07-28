@@ -36,13 +36,13 @@ const App = () => {
     addTip(newTip)
   }
 
-  // const validateInputValues = (title, description) => {
-  //   if (!title && !description) {
-  //     setError('Please fill out title & description fields.')
-  //   } else {
-  //     setError('')
-  //   }
-  // } 
+  const validateInputValues = (title, description) => {
+    if (!title && !description) {
+      setError('Please fill out title & description fields.')
+    } else {
+      setError('')
+    }
+  } 
 
   return (
     <main className='main'>

@@ -6,18 +6,18 @@ const Form = ({ handleAddTip }) => {
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
 
-    const handleTitle = (e) => {
-        setTitle(e.target.value);
-    }
+    // const handleTitle = (e) => {
+    //     setTitle(e.target.value);
+    // }
 
-    const handleDescription = (e) => {
-        setDescription(e.target.value);
-    }
+    // const handleDescription = (e) => {
+    //     setDescription(e.target.value);
+    // }
 
-    const handleMod = (e) => {
-        setMod(e.target.value);
-        console.log(mod, "THIS IS OUR MOD");
-    }
+    // const handleMod = (e) => {
+    //     setMod(e.target.value);
+    //     console.log(mod, "THIS IS OUR MOD");
+    // }
 
     const onAddTip = (e) => {
         e.preventDefault();
@@ -38,11 +38,11 @@ const Form = ({ handleAddTip }) => {
 
     return(
         <form>
-            <input onChange={handleTitle} type="text" placeholder="Tip Title" value={title}/>
-            <input onChange={handleDescription} type="text" placeholder="Description" value={description}/>
+            <input onChange={event => setTitle(event.target.value)} type="text" placeholder="Tip Title" value={title}/>
+            <input onChange={event => setDescription(event.target.value)} type="text" placeholder="Description" value={description}/>
             <select   
                 value={mod} 
-                onChange={handleMod} >
+                onChange={event => setMod(event.target.value)} >
                 <option value="1">Mod 1</option>
                 <option value="2">Mod 2</option>
                 <option value="3">Mod 3</option>
