@@ -32,13 +32,22 @@ const App = () => {
     addTip(newTip)
   }    
 
-  // const validateInputValues = (title, description) => {
-  //   if (!title && !description) {
-  //     setError('Please fill out title & description fields.')
-  //   } else {
-  //     setError('')
-  //   }
-  // } 
+  const validateInputs = (title, description) => {
+    !title || !description ? 
+    setError('Please fill out title & description fields.') :
+    setError('')
+  } 
+
+  const evaluateLoaderAndError = () => {
+    if (error) {
+      return <Error error={error} />
+    } else if (!advice.length && !error) {
+       return <Loader/>
+    } else {
+      return <TipJar tips={ advice } />
+    }
+
+  }
 
 
   return (
@@ -50,12 +59,13 @@ const App = () => {
         <NavLink to='/module/3' className='nav-button'>Module 3</NavLink>
         <NavLink to='/module/4' className='nav-button'>Module 4</NavLink>
       </header>
-      <Form handleAddTip={handleAddTip}/>
+      <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
+      {error === 'Please fill out title & description fields.' 
+      && <Error error={error}/>}
       <Switch>
         <Route exact path='/' render={() => {
           return (
-            !advice.length && !error ? <Loader/> : 
-            <TipJar tips={ advice } />
+            evaluateLoaderAndError()
           )
         }}/>
         <Route exact path='/module/:num' render={({match}) => {
@@ -69,7 +79,6 @@ const App = () => {
           <Error error={'404 Not Found'} />
         }/>
         {/* {
-        
       {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
       }  */} 
