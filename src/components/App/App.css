@@ -33,6 +33,10 @@ div {
   cursor: pointer;
 }
 
+.nav-button {
+  background-color: #056475;
+}
+
 a {
   margin: 1%;
   text-decoration: none;
