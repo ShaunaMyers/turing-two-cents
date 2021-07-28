@@ -11,11 +11,6 @@ const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
 
-  // useEffect(() => {
-  //   getTips()
-  //   .then(data => setAdvice(data.rows))
-  // }, [])
-
   useEffect(() => {
     const fetchData = async () => {
       setError('');
