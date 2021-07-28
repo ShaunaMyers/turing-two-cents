@@ -33,11 +33,9 @@ const App = () => {
   }    
 
   const validateInputs = (title, description) => {
-    if (!title || !description) {
-      setError('Please fill out title & description fields.')
-    } else {
-      setError('')
-    }
+    !title || !description ? 
+    setError('Please fill out title & description fields.') :
+    setError('')
   } 
 
 
@@ -56,8 +54,11 @@ const App = () => {
       <Switch>
         <Route exact path='/' render={() => {
           return (
-            !advice.length && !error ? <Loader/> : 
-            <TipJar tips={ advice } />
+            evaluateLoaderAndError()
+            // error ? <Error error={error} /> :
+            // <TipJar tips={ advice } />
+            // !advice.length ? !error ? <Loader/> : 
+            // <TipJar tips={ advice } />
           )
         }}/>
         <Route exact path='/module/:num' render={({match}) => {
