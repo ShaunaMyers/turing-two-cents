@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
 import './Form.css';
+import PropTypes from 'prop-types';
 
 const Form = ({ handleAddTip, validateInputs }) => {
     const [title, setTitle] = useState('');
@@ -42,3 +43,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
 }
 
 export default Form;
+
+Form.propTypes = {
+    
+  };
