@@ -10,8 +10,12 @@ const TipJar = ({ tips, handleDelete }) => {
   }).sort((a, b) => b.date - a.date)
   // const sortedMiliTips = miliSecTips.sort((a, b) => b.date - a.date);
 
+  const formatDate = (date) => {
+    return new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })
+  }
+
   const sortedTips = miliSecTips.map(tip => {
-    return { ...tip, date: new Date(tip.date).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' }) }
+    return { ...tip, date: formatDate(tip.date) }
   })
 
   const allTips = sortedTips.map(tip => {
