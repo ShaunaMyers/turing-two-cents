@@ -34,10 +34,8 @@ const App = () => {
 
   const validateInputs = (title, description) => {
     if (!title || !description) {
-      console.log('hi')
       setError('Please fill out title & description fields.')
     } else {
-      console.log('not hi')
       setError('')
     }
   } 
