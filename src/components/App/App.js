@@ -96,5 +96,6 @@ export default App
 
 App.propTypes = {
   advice: PropTypes.array,
-  error: PropTypes.string
+  error: PropTypes.string,
+  handleDelete: PropTypes.func,
 };
