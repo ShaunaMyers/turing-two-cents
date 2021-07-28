@@ -30,5 +30,6 @@ const TipJar = ({ tips, handleDelete }) => {
 export default TipJar;
 
 TipJar.propTypes = {
-  
+  tips: PropTypes.array,
+  handleDelete: PropTypes.func
 }
