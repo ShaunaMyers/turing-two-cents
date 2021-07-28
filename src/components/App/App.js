@@ -5,7 +5,7 @@ import Form from '../Form/Form';
 import Error from '../Error/Error';
 import Loader from '../Loader/Loader';
 import './App.css';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch, Link } from 'react-router-dom';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
@@ -48,18 +48,32 @@ const App = () => {
   return (
     <main className='main'>
       <header>
-        <h1>Turing Tip Jar</h1>
+        <Link to='/'><h1>Turing Tip Jar</h1></Link>
         <NavLink to='/module/1' className='nav-button'>Module 1</NavLink>
         <NavLink to='/module/2' className='nav-button'>Module 2</NavLink>
         <NavLink to='/module/3' className='nav-button'>Module 3</NavLink>
         <NavLink to='/module/4' className='nav-button'>Module 4</NavLink>
       </header>
       <Form handleAddTip={handleAddTip}/>
-      {!advice.length && !error ? <Loader/> : 
-      <TipJar tips={ advice } />}
+      <Switch>
+        <Route exact path='/' render={() => {
+          return (
+            !advice.length && !error ? <Loader/> : 
+            <TipJar tips={ advice } />
+          )
+          
+        }}/>
+        {/* <Route exact path='/' render={() => {
+          
+        }}/>
+        
       {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
-      } 
+      }  */}
+
+
+
+      </Switch>
     </main>
   )
 };
