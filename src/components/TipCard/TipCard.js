@@ -20,5 +20,9 @@ export default Tip;
 Tip.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
-
+  description: PropTypes.string,
+  mod: PropTypes.number,
+  rating: PropTypes.number,
+  date: PropTypes.string,
+  handleDelete: PropTypes.func
 }
