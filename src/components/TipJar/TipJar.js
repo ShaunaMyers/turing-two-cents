@@ -2,6 +2,7 @@ import { description } from 'commander';
 import React from 'react';
 import TipCard from '../TipCard/TipCard'
 import './TipJar.css';
+import PropTypes from 'prop-types';
 
 const TipJar = ({ tips, handleDelete }) => {
   const allTips = tips.map(tip => {
