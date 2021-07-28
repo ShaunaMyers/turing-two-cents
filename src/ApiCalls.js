@@ -19,7 +19,6 @@ export const addTip = (newTip) => {
 export const deleteTip = (id) => {
   return fetch('https://turingtwocentapi.herokuapp.com/', {
     method: 'DELETE',
-    mode: 'cors',
     headers: {
       'content-type': 'application/json',
     },

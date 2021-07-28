@@ -86,7 +86,7 @@ const App = () => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
           return (
-            <TipJar deleteTips={handleDelete} tips={filtered}/>
+            <TipJar handleDelete={handleDelete} tips={filtered}/>
           )
         }}/>
         <Route path='/' render={() => 

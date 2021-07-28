@@ -29,6 +29,7 @@ div {
 }
 
 .mod-button:hover {
+  background-color: #056475;
   color: white;
   cursor: pointer;
 }
