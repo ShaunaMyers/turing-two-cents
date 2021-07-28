@@ -5,15 +5,11 @@ import Form from '../Form/Form';
 import Error from '../Error/Error';
 import Loader from '../Loader/Loader';
 import './App.css';
+import { Route, NavLink, Switch, Link } from 'react-router-dom';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
-
-  // useEffect(() => {
-  //   getTips()
-  //   .then(data => setAdvice(data.rows))
-  // }, [])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +30,7 @@ const App = () => {
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
     addTip(newTip)
-  }
+  }    
 
   const validateInputs = (title, description) => {
     if (!title || !description) {
@@ -46,17 +42,41 @@ const App = () => {
     }
   } 
 
+
   return (
     <main className='main'>
-      <header><h1>Turing Tip Jar</h1></header>
+      <header>
+        <Link to='/'><h1>Turing Tip Jar</h1></Link>
+        <NavLink to='/module/1' className='nav-button'>Module 1</NavLink>
+        <NavLink to='/module/2' className='nav-button'>Module 2</NavLink>
+        <NavLink to='/module/3' className='nav-button'>Module 3</NavLink>
+        <NavLink to='/module/4' className='nav-button'>Module 4</NavLink>
+      </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {error === 'Please fill out title & description fields.' 
       && <Error error={error}/>}
-      {!advice.length && !error ? <Loader/> : 
-      <TipJar tips={ advice } />}
+      <Switch>
+        <Route exact path='/' render={() => {
+          return (
+            !advice.length && !error ? <Loader/> : 
+            <TipJar tips={ advice } />
+          )
+        }}/>
+        <Route exact path='/module/:num' render={({match}) => {
+          let selectedMod =  parseInt(match.params.num)
+          let filtered = advice.filter(tip => tip.mod === selectedMod)
+          return (
+            <TipJar tips={filtered}/>
+          )
+        }}/>
+        <Route path='/' render={() => 
+          <Error error={'404 Not Found'} />
+        }/>
+        {/* {
       {error ? <Error error={error} /> :
       <TipJar tips={ advice } />
-      } 
+      }  */} 
+      </Switch>
     </main>
   )
 };
