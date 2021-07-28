@@ -17,3 +17,8 @@ const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
 
 export default Tip;
 
+Tip.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+
+}
