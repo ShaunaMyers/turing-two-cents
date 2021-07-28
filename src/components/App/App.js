@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTips, addTip } from '../../ApiCalls';
+import { getTips, addTip, deleteTip } from '../../ApiCalls';
 import TipJar from '../TipJar/TipJar';
 import Form from '../Form/Form';
 import Error from '../Error/Error';
@@ -44,11 +44,15 @@ const App = () => {
     } else if (!advice.length && !error) {
        return <Loader/>
     } else {
-      return <TipJar tips={ advice } />
+      return <TipJar handleDelete={handleDelete} tips={ advice } />
     }
-
   }
 
+  const handleDelete = (id) => {
+    const filtered = advice.filter(tip => tip.id !== id)
+    setAdvice(filtered)
+    deleteTip(id)
+  }
 
   return (
     <main className='main'>
@@ -72,7 +76,7 @@ const App = () => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
           return (
-            <TipJar tips={filtered}/>
+            <TipJar deleteTips={handleDelete} tips={filtered}/>
           )
         }}/>
         <Route path='/' render={() => 
