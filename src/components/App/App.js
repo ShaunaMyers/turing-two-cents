@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTips, addTip, deleteTip } from '../../ApiCalls';
+import { getTips, addTip, deleteTip, updateRating } from '../../ApiCalls';
 import TipJar from '../TipJar/TipJar';
 import Form from '../Form/Form';
 import Error from '../Error/Error';
@@ -43,6 +43,7 @@ const App = () => {
   const handleRating = (rating, id) => {
     console.log(id, ' :id inside handlerating');
     console.log(rating, ' :rating in handlerating');
+    updateRating(rating, id)
   }
 
   const evaluateLoaderAndError = () => {
