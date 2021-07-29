@@ -27,9 +27,9 @@ const App = () => {
     };
  
     fetchData();
-    return () => {
-      clearTimeout(timer);
-    };
+    // return () => {
+    //   clearTimeout(timer);
+    // };
   }, []);
 
   const handleAddTip = (newTip) => {
