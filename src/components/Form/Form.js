@@ -37,7 +37,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
                 <option value="3">Mod 3</option>
                 <option value="4">Mod 4</option>
             </select>
-            <button onClick={onAddTip}>Submit</button>
+            <button className='new-tip-button'onClick={onAddTip}>Submit a Tip</button>
         </form>
     )
 }
