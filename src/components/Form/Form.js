@@ -9,11 +9,8 @@ const Form = ({ handleAddTip, validateInputs }) => {
 
     const onAddTip = (e) => {
         e.preventDefault();
-
-        const date = new Date(Date.now()).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
-        // const formattedDate = date.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
         if (title && description) {
-            handleAddTip({ title, description, mod, rating: 0, date, id: Math.random() });
+            handleAddTip({ title, description, mod, rating: 0, date: Date.now(), id: Math.random() });
         }
         validateInputs(title, description);
         clearInputs();
