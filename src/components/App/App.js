@@ -6,6 +6,7 @@ import Error from '../Error/Error';
 import Loader from '../Loader/Loader';
 import './App.css';
 import { Route, NavLink, Switch, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
@@ -102,3 +103,9 @@ const App = () => {
 };
 
 export default App
+
+App.propTypes = {
+  advice: PropTypes.array,
+  error: PropTypes.string,
+  handleDelete: PropTypes.func,
+};

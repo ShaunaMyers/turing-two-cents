@@ -1,6 +1,7 @@
 import React from 'react';
 import TipCard from '../TipCard/TipCard'
 import './TipJar.css';
+import PropTypes from 'prop-types';
 
 const TipJar = ({ tips, handleDelete }) => {
 
@@ -39,3 +40,8 @@ const TipJar = ({ tips, handleDelete }) => {
 };
 
 export default TipJar;
+
+TipJar.propTypes = {
+  tips: PropTypes.array,
+  handleDelete: PropTypes.func
+}
