@@ -19,7 +19,7 @@ button {
 }
 
 .new-tip-button {
-  background-color: #d31e1e;
+  background-color: #cc193b;
   /* background-color: #34a2a7; */
   border-radius: 30px;
   color: white;
@@ -31,7 +31,7 @@ button {
 }
 
 .new-tip-button:hover {
-  background-color: #056475;
+  background-color: #e63757;
   color: white;
   cursor: pointer;
   transition: 500ms;
