@@ -6,10 +6,13 @@ const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
   return (
     <article className='tip-card'>
       <h2>{title}</h2>
+      <hr />
       <p className="description">{description}</p>
-      <p>{mod}</p>
-      <p>{rating}</p>
-      <p>{date}</p>
+      <div className='details'>
+      <p>Mod: {mod}</p>
+      <p>Your Rating: {rating}</p>
+      </div>
+      <p>Date Submitted: {date}</p>
       <button onClick={(e) => {handleDelete(id)}} className='delete'>Delete</button>
     </article>
   )
