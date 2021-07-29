@@ -1,4 +1,7 @@
 .error {
+  color: #cd3541;
   display: flex;
+  font-size: 20px;
+  font-weight: bold;
   justify-content: center;
 }
