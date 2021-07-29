@@ -50,7 +50,7 @@ const App = () => {
     } else if (!advice.length && !error) {
        return <Loader/>
     } else {
-      return <TipJar handleDelete={handleDelete} tips={ advice } />
+      return <TipJar handleDelete={handleDelete} tips={advice} />
     }
   }
 
@@ -60,7 +60,6 @@ const App = () => {
     deleteTip(id)
     if (!advice.length) {
       setAllDeleted(true);
-      setError('All out of advice. Please contribute your tip to our tip jar')
     }
       
   }
