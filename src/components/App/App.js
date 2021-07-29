@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
-  const [allDeleted, setAllDeleted] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +32,6 @@ const App = () => {
     setAdvice([...advice, newTip])
     addTip(newTip)
     if (advice.length) {
-      // setAllDeleted(false);
       setError('');
     }
   }    
@@ -58,13 +56,8 @@ const App = () => {
     const filtered = advice.filter(tip => tip.id !== id)
     setAdvice(filtered)
     deleteTip(id)
-    if (!filtered.length) {
-      console.log('hey')
-      setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
-      // setAllDeleted(true);
-      // console.log('all deleted', allDeleted);
-    }
-      
+    !filtered.length &&
+      setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
   }
 
   return (
@@ -92,16 +85,12 @@ const App = () => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
           return (
-            <TipJar allDeleted={allDeleted} handleDelete={handleDelete} tips={filtered}/>
+            <TipJar handleDelete={handleDelete} tips={filtered}/>
           )
         }}/>
         <Route path='/' render={() => 
           <Error error={'404 Not Found'} />
         }/>
-        {/* {
-      {error ? <Error error={error} /> :
-      <TipJar tips={ advice } />
-      }  */} 
       </Switch>
     </main>
   )
