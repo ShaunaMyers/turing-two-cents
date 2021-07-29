@@ -15,7 +15,7 @@ h1 {
 
 h1:hover {
   transition: 100ms;
-  color: #056475;
+  color: #34a2a7;
   cursor: pointer;
 }
 
@@ -46,6 +46,7 @@ h1:hover {
 }
 
 .nav-button {
+  color: #15f0fc;
   background-color: #056475;
 }
 
