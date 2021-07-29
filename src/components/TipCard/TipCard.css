@@ -34,10 +34,6 @@
   text-align: center;
 }
 
-.details :nth-child(1) {
-  /* margin-right: 2rem; */
-}
-
 hr {
   border: solid 1px black;
   width: 100%;
