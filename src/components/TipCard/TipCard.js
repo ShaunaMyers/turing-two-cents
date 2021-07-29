@@ -7,6 +7,7 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
   
   return (
     <article className='tip-card'>
+      <div className={`styling-box mod-${mod}`}></div>
       <h2>{title}</h2>
       <hr />
       <p className="description">{description}</p>

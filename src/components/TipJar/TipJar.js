@@ -1,5 +1,5 @@
 import React from 'react';
-import TipCard from '../TipCard/TipCard'
+import TipCard from '../TipCard/TipCard';
 import './TipJar.css';
 import PropTypes from 'prop-types';
 

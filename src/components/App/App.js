@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
+  let timer;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,19 +28,18 @@ const App = () => {
     };
  
     fetchData();
+    // return () => {
+    //   clearTimeout(timer);
+    // };
   }, []);
 
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
     addTip(newTip)
+    if (advice.length) {
+      setError('');
+    }
   }    
-
-  const validateInputs = (title, description) => {
-    !title || !description ? 
-    setError('Please fill out title & description fields.') :
-    setError('')
-  }
-  
   const handleRating = (rating, id) => {
     console.log(id, ' :id inside handlerating');
     console.log(rating, ' :rating in handlerating');
@@ -56,9 +56,18 @@ const App = () => {
     updateRating(rating, id)
     console.log(advice)
   }
+  
+  const validateInputs = (title, description) => {  
+    if (!title || !description) {
+      setError('Please fill out title & description fields.')
+      timer = setTimeout(() => setError(''), 5000)
+    } else {
+      setError('')
+    }
+  } 
 
   const evaluateLoaderAndError = () => {
-    if (error) {
+    if (error && !advice.length) {
       return <Error error={error} />
     } else if (!advice.length && !error) {
        return <Loader/>
@@ -71,19 +80,19 @@ const App = () => {
     const filtered = advice.filter(tip => tip.id !== id)
     setAdvice(filtered)
     deleteTip(id)
+    !filtered.length &&
+      setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
   }
 
   return (
     <main className='main'>
       <header className='nav-header'>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
-        {/* <div> */}
-          <NavLink to='/module/1' activeClassName='nav-button' className='mod-button'>Module 1</NavLink>
-          <NavLink to='/module/2' activeClassName='nav-button' className='mod-button'>Module 2</NavLink>
-          <NavLink to='/module/3' activeClassName='nav-button' className='mod-button'>Module 3</NavLink>
-          <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
-          <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
-        {/* </div> */}
+        <NavLink to='/module/1' activeClassName='nav-button' className='mod-button'>Module 1</NavLink>
+        <NavLink to='/module/2' activeClassName='nav-button' className='mod-button'>Module 2</NavLink>
+        <NavLink to='/module/3' activeClassName='nav-button' className='mod-button'>Module 3</NavLink>
+        <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
+        <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {error === 'Please fill out title & description fields.' 
@@ -104,10 +113,6 @@ const App = () => {
         <Route path='/' render={() => 
           <Error error={'404 Not Found'} />
         }/>
-        {/* {
-      {error ? <Error error={error} /> :
-      <TipJar tips={ advice } />
-      }  */} 
       </Switch>
     </main>
   )
