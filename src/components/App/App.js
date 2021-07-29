@@ -57,15 +57,15 @@ const App = () => {
 
   return (
     <main className='main'>
-      <header>
+      <header className='nav-header'>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
-        <div>
+        {/* <div> */}
           <NavLink to='/module/1' activeClassName='nav-button' className='mod-button'>Module 1</NavLink>
           <NavLink to='/module/2' activeClassName='nav-button' className='mod-button'>Module 2</NavLink>
           <NavLink to='/module/3' activeClassName='nav-button' className='mod-button'>Module 3</NavLink>
           <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
           <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
-        </div>
+        {/* </div> */}
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {error === 'Please fill out title & description fields.' 
