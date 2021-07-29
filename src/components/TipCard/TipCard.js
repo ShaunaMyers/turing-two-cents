@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
   return (
-    <article className='tip-card'>
+    <article className={`tip-card mod-${mod}`}>
       <h2>{title}</h2>
       <hr />
       <p className="description">{description}</p>
