@@ -31,6 +31,7 @@ describe('Home Page', () => {
   })
   it('As a user, i should be able to click Back Button after clicking Module 1 to return to Home Page', () => {
     cy.get('[href="/module/1"]').click()
+    cy.url().should('eq','http://localhost:3000/module/1')
     cy.go('back')
     cy.url().should('eq','http://localhost:3000/')
   })
