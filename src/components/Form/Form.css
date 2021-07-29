@@ -5,12 +5,12 @@ form {
   margin-top: 1rem;
 }
 
-input {  
+input {
   height: 20px;
   border-radius: 30px;
   margin: 0.7%;
   width: 30%;
-  padding: .5%;
+  padding: 0.5%;
 }
 
 button {
@@ -19,11 +19,12 @@ button {
 }
 
 .new-tip-button {
-  background-color: #ef0909;
+  background-color: #d31e1e;
+  /* background-color: #34a2a7; */
   border-radius: 30px;
   color: white;
   font-weight: bold;
-  padding: .5rem;
+  padding: 0.5rem;
   width: 10rem;
   text-align: center;
   transition: 500ms;
