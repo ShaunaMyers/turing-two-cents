@@ -4,10 +4,8 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  /* height: 30em; */
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 5%;
-  /* width: 20em; */
 }
 
 .description {
