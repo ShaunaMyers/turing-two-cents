@@ -27,3 +27,15 @@ export const deleteTip = (id) => {
   .then(response => response.json())
   .catch(err => console.log(err))
 };
+
+export const updateRating = (rating, id) => {
+  return fetch('https://turingtwocentapi.herokuapp.com/', {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({rating, id})
+  })
+  .then(response => response.json())
+  .catch(err => console.log(err))
+};
