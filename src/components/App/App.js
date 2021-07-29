@@ -60,18 +60,11 @@ const App = () => {
       <header>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
         <div>
-          <NavLink to='/module/1' activeClassName='nav-button'>
-            <button className="mod-button">Module 1</button>
-          </NavLink>
-          <NavLink to='/module/2' activeClassName='nav-button'>
-            <button className="mod-button">Module 2</button>
-          </NavLink>
-          <NavLink to='/module/3' activeClassName='nav-button'>
-            <button className="mod-button">Module 3</button>
-          </NavLink>
-          <NavLink to='/module/4' activeClassName='nav-button'>
-            <button className="mod-button">Module 4</button>
-          </NavLink>
+          <NavLink to='/module/1' activeClassName='nav-button' className='mod-button'>Module 1</NavLink>
+          <NavLink to='/module/2' activeClassName='nav-button' className='mod-button'>Module 2</NavLink>
+          <NavLink to='/module/3' activeClassName='nav-button' className='mod-button'>Module 3</NavLink>
+          <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
+          <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
         </div>
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
