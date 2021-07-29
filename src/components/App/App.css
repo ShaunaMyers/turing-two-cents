@@ -16,13 +16,10 @@ h1 {
 h1:hover {
   transition: 100ms;
   background-color: #056475;
+  border-radius: 30px;
   color: white;
   cursor: pointer;
 }
-/* div {
-  display: flex;
-  justify-content: center;
-} */
 
 .nav-header {
   border-bottom: solid black 4px;
@@ -37,9 +34,9 @@ h1:hover {
   color: #dfdada;
   font-size: 18px;
   font-weight: bold;
-  /* margin-bottom: 20%; */
   padding: 12px;
   text-align: center;
+  transition: 500ms;
   width: 130px;
 }
 
