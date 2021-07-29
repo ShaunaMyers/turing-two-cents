@@ -3,7 +3,7 @@ import TipCard from '../TipCard/TipCard'
 import './TipJar.css';
 import PropTypes from 'prop-types';
 
-const TipJar = ({ tips, handleDelete }) => {
+const TipJar = ({ tips, handleDelete, handleRating }) => {
 
   const miliSecTips = tips.map(tip => { 
     return { ...tip, date: Date.parse(tip.date) }
@@ -20,6 +20,7 @@ const TipJar = ({ tips, handleDelete }) => {
   const allTips = sortedTips.map(tip => {
     return (
       <TipCard 
+        handleRating={handleRating}
         id={tip.id}
         key={tip.id}
         title={tip.title}
