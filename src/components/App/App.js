@@ -32,7 +32,10 @@ const App = () => {
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
     addTip(newTip)
-    advice.length && setAllDeleted(false);
+    if (advice.length) {
+      setAllDeleted(false);
+      setError('');
+    }
   }    
 
   const validateInputs = (title, description) => {
@@ -55,7 +58,11 @@ const App = () => {
     const filtered = advice.filter(tip => tip.id !== id)
     setAdvice(filtered)
     deleteTip(id)
-    !advice.length && setAllDeleted(true);
+    if (!advice.length) {
+      setAllDeleted(true);
+      setError('All out of advice. Please contribute your tip to our tip jar')
+    }
+      
   }
 
   return (
@@ -83,7 +90,7 @@ const App = () => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
           return (
-            <TipJar handleDelete={handleDelete} tips={filtered}/>
+            <TipJar allDeleted={allDeleted} handleDelete={handleDelete} tips={filtered}/>
           )
         }}/>
         <Route path='/' render={() => 
