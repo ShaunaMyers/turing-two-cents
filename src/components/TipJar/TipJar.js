@@ -20,6 +20,7 @@ const TipJar = ({ tips, handleDelete, handleRating }) => {
   const allTips = sortedTips.map(tip => {
     return (
       <TipCard 
+        rating={tip.rating}
         handleRating={handleRating}
         id={tip.id}
         key={tip.id}
