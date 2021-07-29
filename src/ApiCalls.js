@@ -22,9 +22,8 @@ export const deleteTip = (id) => {
     headers: {
       'content-type': 'application/json',
     },
-    body: JSON.stringify(id)
+    body: JSON.stringify({id})
   })
   .then(response => response.json())
-  // .then(response => console.log(response,' : response in fetch call'))
   .catch(err => console.log(err))
 };
