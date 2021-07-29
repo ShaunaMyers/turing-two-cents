@@ -7,6 +7,7 @@ import Loader from '../Loader/Loader';
 import './App.css';
 import { Route, NavLink, Switch, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Rating from 'react-rating';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
@@ -38,6 +39,11 @@ const App = () => {
     setError('Please fill out title & description fields.') :
     setError('')
   } 
+  
+  const handleRating = (rating, id) => {
+    console.log(id, ' :id inside handlerating');
+    console.log(rating, ' :rating in handlerating');
+  }
 
   const evaluateLoaderAndError = () => {
     if (error) {
@@ -45,7 +51,7 @@ const App = () => {
     } else if (!advice.length && !error) {
        return <Loader/>
     } else {
-      return <TipJar handleDelete={handleDelete} tips={ advice } />
+      return <TipJar handleRating={handleRating} Rating={Rating} handleDelete={handleDelete} tips={ advice } />
     }
   }
 
@@ -80,7 +86,7 @@ const App = () => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
           return (
-            <TipJar handleDelete={handleDelete} tips={filtered}/>
+            <TipJar handleRating={handleRating} Rating={Rating} handleDelete={handleDelete} tips={filtered}/>
           )
         }}/>
         <Route path='/' render={() => 
