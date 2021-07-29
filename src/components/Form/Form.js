@@ -27,6 +27,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
 
     return(
         <form>
+            <h3>Share Your Advice</h3>
             <input onChange={event => setTitle(event.target.value)} type="text" placeholder="Tip Title" value={title}/>
             <input onChange={event => setDescription(event.target.value)} type="text" placeholder="Description" value={description}/>
             <select   
