@@ -1,8 +1,10 @@
 import React from 'react';
 import './TipCard.css';
 import PropTypes from 'prop-types';
+import Rating from 'react-rating';
 
-const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
+const Tip = ({ id, title, description, mod, date, handleDelete, handleRating}) => {
+  
   return (
     <article className='tip-card'>
       <h2>{title}</h2>
@@ -10,7 +12,10 @@ const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
       <p className="description">{description}</p>
       <div className='details'>
       <p>Mod: {mod}</p>
-      <p>Your Rating: {rating}</p>
+      <p>Your Rating: <Rating onClick={(value) => handleRating(value, id)}
+      // emptySymbol={<img src="assets/images/star-empty.png" className="icon" />}
+      // fullSymbol={<img src="assets/images/star-full.png" className="icon" />}
+      /></p>
       </div>
       <p>Date Submitted: {date}</p>
       <button onClick={(e) => {handleDelete(id)}} className='delete'>Delete</button>
