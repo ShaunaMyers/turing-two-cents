@@ -33,7 +33,7 @@ const App = () => {
     setAdvice([...advice, newTip])
     addTip(newTip)
     if (advice.length) {
-      setAllDeleted(false);
+      // setAllDeleted(false);
       setError('');
     }
   }    
@@ -58,8 +58,11 @@ const App = () => {
     const filtered = advice.filter(tip => tip.id !== id)
     setAdvice(filtered)
     deleteTip(id)
-    if (!advice.length) {
-      setAllDeleted(true);
+    if (!filtered.length) {
+      console.log('hey')
+      setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
+      // setAllDeleted(true);
+      // console.log('all deleted', allDeleted);
     }
       
   }
