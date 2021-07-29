@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 const Tip = ({ id, title, description, mod, rating, date, handleDelete}) => {
   return (
-    <article className={`tip-card mod-${mod}`}>
+    <article className='tip-card'>
+      <div className={`styling-box mod-${mod}`}></div>
       <h2>{title}</h2>
       <hr />
       <p className="description">{description}</p>
