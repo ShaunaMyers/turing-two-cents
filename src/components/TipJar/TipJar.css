@@ -3,5 +3,5 @@
   grid-gap: 2%;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
-  margin-top: 5%;
+  margin: 5% 2% 2% 2%
 }
