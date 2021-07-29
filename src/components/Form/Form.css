@@ -1,18 +1,39 @@
 form {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-top: 1rem;
 }
 
-input {
+input {  
   height: 20px;
+  border-radius: 30px;
   margin: 0.7%;
   width: 30%;
+  padding: .5%;
 }
 
 button {
   font-size: 17px;
   margin: 0.7%;
+}
+
+.new-tip-button {
+  background-color: #ef0909;
+  border-radius: 30px;
+  color: #dfdada;
+  font-weight: bold;
+  padding: .5rem;
+  width: 10rem;
+  text-align: center;
+  transition: 500ms;
+}
+
+.new-tip-button:hover {
+  background-color: #056475;
+  color: white;
+  cursor: pointer;
+  transition: 500ms;
 }
 
 select {
