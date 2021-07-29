@@ -10,14 +10,14 @@
     {
       "title": "This is a title",
       "desciption": "This is a descriptiopn",
-      "mod": 4,
+      "mod": 2,
       "rating": 2,
       "date": "7/20/2021"
     },
     {
-      "title": "Put title here",
+      "title": "Title for mod1",
       "desciption": "descirptiong oes here",
-      "mod": 4,
+      "mod": 1,
       "rating": 2,
       "date": "7/25/2021"
     }
