@@ -19,13 +19,11 @@ export const addTip = (newTip) => {
 export const deleteTip = (id) => {
   return fetch('https://turingtwocentapi.herokuapp.com/', {
     method: 'DELETE',
-    mode: 'cors',
     headers: {
       'content-type': 'application/json',
     },
-    body: JSON.stringify(id)
+    body: JSON.stringify({id})
   })
   .then(response => response.json())
-  // .then(response => console.log(response,' : response in fetch call'))
   .catch(err => console.log(err))
 };
