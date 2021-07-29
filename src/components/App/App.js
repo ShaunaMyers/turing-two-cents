@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
+  const [allDeleted, setAllDeleted] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +32,7 @@ const App = () => {
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
     addTip(newTip)
+    advice.length && setAllDeleted(false);
   }    
 
   const validateInputs = (title, description) => {
@@ -53,6 +55,7 @@ const App = () => {
     const filtered = advice.filter(tip => tip.id !== id)
     setAdvice(filtered)
     deleteTip(id)
+    !advice.length && setAllDeleted(true);
   }
 
   return (
