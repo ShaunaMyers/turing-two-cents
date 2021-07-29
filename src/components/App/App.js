@@ -43,7 +43,11 @@ const App = () => {
   const handleRating = (rating, id) => {
     console.log(id, ' :id inside handlerating');
     console.log(rating, ' :rating in handlerating');
-    updateRating(rating, id)
+    const findCard = advice.find((tip) => tip.id === id)
+    findCard.rating = rating
+    const filteredAdvice = advice.filter((tip) => tip.id !== id)
+    setAdvice([...filteredAdvice, findCard])
+    updateRating(rating, findCard.id)
   }
 
   const evaluateLoaderAndError = () => {
