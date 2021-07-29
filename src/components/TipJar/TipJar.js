@@ -1,10 +1,9 @@
 import React from 'react';
 import TipCard from '../TipCard/TipCard';
-import Error from '../Error/Error';
 import './TipJar.css';
 import PropTypes from 'prop-types';
 
-const TipJar = ({ allDeleted, tips, handleDelete }) => {
+const TipJar = ({ tips, handleDelete }) => {
 
   const miliSecTips = tips.map(tip => { 
     return { ...tip, date: Date.parse(tip.date) }
@@ -20,9 +19,6 @@ const TipJar = ({ allDeleted, tips, handleDelete }) => {
 
   const allTips = sortedTips.map(tip => {
     return (
-      <article>
-      {allDeleted ? 
-      <Error error={'Oh no! All out of advice! Please contribute your tip to our tip jar.'}/> :
       <TipCard 
         id={tip.id}
         key={tip.id}
@@ -33,8 +29,6 @@ const TipJar = ({ allDeleted, tips, handleDelete }) => {
         date={tip.date}
         handleDelete={handleDelete}
       />
-      }
-      </article>
     )
   });
 
