@@ -40,7 +40,7 @@ const App = () => {
   } 
 
   const evaluateLoaderAndError = () => {
-    if (error) {
+    if (error && !advice.length) {
       return <Error error={error} />
     } else if (!advice.length && !error) {
        return <Loader/>
