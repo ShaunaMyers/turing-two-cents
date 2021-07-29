@@ -14,18 +14,18 @@ const App = () => {
   const [error, setError] = useState('');
   let timer;
 
+  const fetchData = async () => {
+    setError('');
+
+    try {
+      const result = await getTips();
+      setAdvice(result.rows);
+    } catch (error) {
+      setError('Oops, problem loading tips. Please refresh the page.');
+    }
+
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      setError('');
- 
-      try {
-        const result = await getTips();
-        setAdvice(result.rows);
-      } catch (error) {
-        setError('Oops, problem loading tips. Please refresh the page.');
-      }
- 
-    };
  
     fetchData();
     // return () => {
@@ -36,6 +36,9 @@ const App = () => {
   const handleAddTip = (newTip) => {
     setAdvice([...advice, newTip])
     addTip(newTip)
+    .then(() => {
+      fetchData()
+    })
     if (advice.length) {
       setError('');
     }
