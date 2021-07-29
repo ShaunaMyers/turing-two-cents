@@ -1,13 +1,41 @@
 .tip-card {
-  align-items: center;
+  /* align-items: center; */
   border: 2px solid black;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 5%;
+  text-align: center;
 }
 
 .description {
   text-align: center;
+}
+
+.delete {
+  background-color: lightgoldenrodyellow;
+  border-radius: 30px;
+  padding: .5rem;
+}
+
+.delete:hover {
+  background-color: #056475;
+  color: white;
+  cursor: pointer;
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.details :nth-child(1) {
+  /* margin-right: 2rem; */
+}
+
+hr {
+  border: solid 1px black;
+  width: 100%;
 }
