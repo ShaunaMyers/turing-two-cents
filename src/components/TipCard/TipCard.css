@@ -16,14 +16,16 @@
 }
 
 .delete {
-  background-color: lightgoldenrodyellow;
+  background-color: white;
   border-radius: 30px;
+  border: solid 1px black;
   padding: .5rem;
   margin-bottom: 3%;
 }
 
 .delete:hover {
-  background-color: #056475;
+  background-color: #05c2d1;
+  border: solid 1px black;
   color: white;
   cursor: pointer;
 }
@@ -40,13 +42,13 @@ hr {
 }
 
 .mod-1 {
-  background-color: #05c2d1;;
+  background-color: #9F80BB;
 }
 .mod-2 {
-  background-color: lightyellow;
+  background-color: #60F2FC;
 }
 .mod-3 {
-  background-color: #e0990a;;
+  background-color: #f9ae06;;
 }
 .mod-4 {
   background-color: #cc193b;
