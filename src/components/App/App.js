@@ -38,7 +38,7 @@ const App = () => {
     !title || !description ? 
     setError('Please fill out title & description fields.') :
     setError('')
-  } 
+  }
   
   const handleRating = (rating, id) => {
     console.log(id, ' :id inside handlerating');
