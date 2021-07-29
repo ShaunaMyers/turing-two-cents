@@ -4,20 +4,17 @@ import './TipJar.css';
 import PropTypes from 'prop-types';
 
 const TipJar = ({ tips, handleDelete, handleRating }) => {
-
-  const miliSecTips = tips.map(tip => { 
-    return { ...tip, date: Date.parse(tip.date) }
-  }).sort((a, b) => b.date - a.date)
-
+  tips.sort((a, b) => b.date - a.date) 
+  
   const formatDate = (date) => {
     return new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })
   }
 
-  const sortedTips = miliSecTips.map(tip => {
-    return { ...tip, date: formatDate(tip.date) }
+  const formattedTips = tips.map(tip => {
+    return { ...tip, date: formatDate(parseInt(tip.date)) }
   })
 
-  const allTips = sortedTips.map(tip => {
+  const allTips = formattedTips.map(tip => {
     return (
       <TipCard 
         rating={tip.rating}
