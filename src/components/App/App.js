@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTips, addTip, deleteTip } from '../../ApiCalls';
+import { getTips, addTip, deleteTip, updateRating } from '../../ApiCalls';
 import TipJar from '../TipJar/TipJar';
 import Form from '../Form/Form';
 import Error from '../Error/Error';
@@ -7,6 +7,7 @@ import Loader from '../Loader/Loader';
 import './App.css';
 import { Route, NavLink, Switch, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// import Rating from 'react-rating';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
@@ -39,8 +40,24 @@ const App = () => {
       setError('');
     }
   }    
-
-  const validateInputs = (title, description) => {
+  const handleRating = (rating, id) => {
+    console.log(id, ' :id inside handlerating');
+    console.log(rating, ' :rating in handlerating');
+    // const findCard = advice.find((tip) => tip.id === id)
+    // findCard.rating = rating
+    // const filteredAdvice = advice.filter((tip) => tip.id !== id)
+    const updatedAdvice = advice.map( (tip) => {
+      if(tip.id === id) { 
+        tip.rating = rating
+      }
+      return tip
+    })
+    setAdvice(updatedAdvice)
+    updateRating(rating, id)
+    console.log(advice)
+  }
+  
+  const validateInputs = (title, description) => {  
     if (!title || !description) {
       setError('Please fill out title & description fields.')
       timer = setTimeout(() => setError(''), 5000)
@@ -55,7 +72,7 @@ const App = () => {
     } else if (!advice.length && !error) {
        return <Loader/>
     } else {
-      return <TipJar handleDelete={handleDelete} tips={advice} />
+      return <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={ advice } />
     }
   }
 
@@ -90,7 +107,7 @@ const App = () => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
           return (
-            <TipJar handleDelete={handleDelete} tips={filtered}/>
+            <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
           )
         }}/>
         <Route path='/' render={() => 
