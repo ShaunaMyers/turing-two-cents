@@ -15,9 +15,7 @@ h1 {
 
 h1:hover {
   transition: 100ms;
-  background-color: #056475;
-  border-radius: 30px;
-  color: white;
+  color: #056475;
   cursor: pointer;
 }
 
