@@ -21,7 +21,7 @@ button {
 .new-tip-button {
   background-color: #ef0909;
   border-radius: 30px;
-  color: #dfdada;
+  color: white;
   font-weight: bold;
   padding: .5rem;
   width: 10rem;
@@ -38,7 +38,7 @@ button {
 
 select {
   border-radius: 10px;
-  border: solid black 1.5px;
+  border: solid black 2px;
   height: 30px;
   width: 75px;
 }
