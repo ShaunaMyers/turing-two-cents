@@ -9,7 +9,8 @@ const Form = ({ handleAddTip, validateInputs }) => {
 
     const onAddTip = (e) => {
         e.preventDefault();
-        if (title && description) {
+        console.log(title.length, 'title length')
+        if (title && description && title.length < 51 && description.length < 501) {
             handleAddTip({ title, description, mod, rating: 0, date: Date.now(), id: Math.random() });
         }
         validateInputs(title, description);
