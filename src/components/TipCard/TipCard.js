@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './TipCard.css';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating}) => {
   
@@ -26,8 +28,9 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       <div className='rating-details'>
       <p>Your Rating:</p>
       <p><Rating onClick={(value) => onRating(value, id)}
-      // emptySymbol={<img src="assets/images/star-empty.png" className="icon" />}
-      // fullSymbol={<img src="assets/images/star-full.png" className="icon" />}
+      emptySymbol={<FontAwesomeIcon icon={faStar} size="2x" className='empty-star'/>}
+      fullSymbol={<FontAwesomeIcon icon={faStar} size="2x" className='filled-star' />}
+      placeholderSymbol={<FontAwesomeIcon icon={faStar} size="2x" className='filled-star' />}
       placeholderRating={rating}
       /></p>
       {message && <p className="message-text">{message}</p>}
@@ -47,5 +50,6 @@ Tip.propTypes = {
   mod: PropTypes.number,
   rating: PropTypes.number,
   date: PropTypes.string,
-  handleDelete: PropTypes.func
+  handleDelete: PropTypes.func,
+  message: PropTypes.string
 }

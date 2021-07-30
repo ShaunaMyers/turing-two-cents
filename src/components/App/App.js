@@ -7,7 +7,6 @@ import Loader from '../Loader/Loader';
 import './App.css';
 import { Route, NavLink, Switch, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import Rating from 'react-rating';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
@@ -23,14 +22,10 @@ const App = () => {
     } catch (error) {
       setError('Oops, problem loading tips. Please refresh the page.');
     }
-
   };
+
   useEffect(() => {
- 
     fetchData();
-    // return () => {
-    //   clearTimeout(timer);
-    // };
   }, []);
 
   const handleAddTip = (newTip) => {
@@ -43,12 +38,8 @@ const App = () => {
       setError('');
     }
   }    
+
   const handleRating = (rating, id) => {
-    console.log(id, ' :id inside handlerating');
-    console.log(rating, ' :rating in handlerating');
-    // const findCard = advice.find((tip) => tip.id === id)
-    // findCard.rating = rating
-    // const filteredAdvice = advice.filter((tip) => tip.id !== id)
     const updatedAdvice = advice.map( (tip) => {
       if(tip.id === id) { 
         tip.rating = rating
@@ -127,4 +118,6 @@ App.propTypes = {
   advice: PropTypes.array,
   error: PropTypes.string,
   handleDelete: PropTypes.func,
+  handleRating: PropTypes.func,
+  validateInputs: PropTypes.func
 };
