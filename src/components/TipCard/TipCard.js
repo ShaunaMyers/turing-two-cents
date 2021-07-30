@@ -27,6 +27,7 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       // fullSymbol={<img src="assets/images/star-full.png" className="icon" />}
       placeholderRating={rating}
       /></p>
+      {message && <p className="message-text">{message}</p>}
       </div>
       <p>Date Submitted: {date}</p>
       <button onClick={(e) => {handleDelete(id)}} className='delete'>Delete</button>
