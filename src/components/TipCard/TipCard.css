@@ -1,7 +1,7 @@
 .tip-card {
   align-items: center;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 25px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
@@ -13,12 +13,18 @@
   margin-bottom: 20%;
 }
 
+.mod-text {
+  font-size: 20px;
+  margin: 0.8% 5%;
+}
+
 .description {
+  padding: 0% 7%;
   text-align: center;
 }
 
 .delete {
-  background-color: white;
+  background-color: #dcdcdc;
   border-radius: 30px;
   border: solid 1px black;
   padding: 0.6rem;
@@ -27,10 +33,10 @@
 }
 
 .delete:hover {
-  background-color: #05c2d1;
-  border: solid 1px black;
+  background-color: #056475;
   color: white;
   cursor: pointer;
+  transition: 500ms;
 }
 
 .details {
@@ -58,7 +64,10 @@ hr {
 }
 
 .styling-box {
-  border-radius: 50px 50px 0px 0px;
-  height: 2%;
+  border-radius: 25px 25px 0px 0px;
+  display: flex;
+  justify-content: flex-start;
+  height: 6%;
+  opacity: 70%;
   width: 100%;
 }
