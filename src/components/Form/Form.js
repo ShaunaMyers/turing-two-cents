@@ -6,12 +6,17 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
+    const [message, setMessage] = useState('');
 
     const onAddTip = (e) => {
         e.preventDefault();
-        console.log(title.length, 'title length')
         if (title && description && title.length < 51 && description.length < 501) {
             handleAddTip({ title, description, mod, rating: 0, date: Date.now(), id: Math.random() });
+            setMessage('')
+        } else if (title.length > 50) {
+            setMessage('Title is too long. Only 50 characters allowed.')
+        } else if (title.description > 500) {
+            setMessage('Description is too long. Only 50 characters allowed')
         }
         validateInputs(title, description);
         clearInputs();
