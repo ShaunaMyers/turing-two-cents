@@ -1,16 +1,27 @@
 import React, { useState }from 'react';
 import './Form.css';
 import PropTypes from 'prop-types';
+import Error from '../Error/Error';
 
 const Form = ({ handleAddTip, validateInputs }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
+    const [error, setError] = useState('');
+
+    let timer;
 
     const onAddTip = (e) => {
         e.preventDefault();
-        if (title && description) {
+        if (title && description && title.length < 51 && description.length < 501) {
             handleAddTip({ title, description, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
+            setError('')
+        } else if (title.length > 50) {
+            setError('Title is too long. Only 50 characters allowed.')
+            timer = setTimeout(() => setError(''), 3000)
+        } else if (description.length > 500) {
+            setError('Description is too long. Only 500 characters allowed')
+            timer = setTimeout(() => setError(''), 3000)
         }
         validateInputs(title, description);
         clearInputs();
@@ -36,6 +47,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
                 <option value="4">Mod 4</option>
             </select>
             <button className='new-tip-button'onClick={onAddTip}>Submit a Tip</button>
+            {error && <Error error={error}/>}
         </form>
     )
 }
@@ -47,5 +59,6 @@ Form.propTypes = {
     validateInputs: PropTypes.func,
     title: PropTypes.string,
     description: PropTypes.string,
-    mod: PropTypes.number
+    mod: PropTypes.number,
+    error: PropTypes.string
   };

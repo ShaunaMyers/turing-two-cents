@@ -8,6 +8,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating}) => {
   
   const [message, setMessage] = useState('');
+  
   let timer;
 
   const onRating = (value, id) => {
