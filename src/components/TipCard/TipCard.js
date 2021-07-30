@@ -6,6 +6,7 @@ import Rating from 'react-rating';
 const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating}) => {
   
   const [message, setMessage] = useState('');
+  
   let timer;
 
   const onRating = (value, id) => {
