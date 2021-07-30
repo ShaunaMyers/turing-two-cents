@@ -1,12 +1,13 @@
 import React, { useState }from 'react';
 import './Form.css';
 import PropTypes from 'prop-types';
+import Error from '../Error/Error';
 
 const Form = ({ handleAddTip, validateInputs }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
-    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
 
     let timer;
 
@@ -14,13 +15,13 @@ const Form = ({ handleAddTip, validateInputs }) => {
         e.preventDefault();
         if (title && description && title.length < 51 && description.length < 501) {
             handleAddTip({ title, description, mod, rating: 0, date: Date.now(), id: Math.random() });
-            setMessage('')
+            setError('')
         } else if (title.length > 50) {
-            setMessage('Title is too long. Only 50 characters allowed.')
-            timer = setTimeout(() => setMessage(''), 3000)
+            setError('Title is too long. Only 50 characters allowed.')
+            timer = setTimeout(() => setError(''), 3000)
         } else if (description.length > 500) {
-            setMessage('Description is too long. Only 50 characters allowed')
-            timer = setTimeout(() => setMessage(''), 3000)
+            setError('Description is too long. Only 50 characters allowed')
+            timer = setTimeout(() => setError(''), 3000)
         }
         validateInputs(title, description);
         clearInputs();
@@ -46,7 +47,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
                 <option value="4">Mod 4</option>
             </select>
             <button className='new-tip-button'onClick={onAddTip}>Submit a Tip</button>
-            {message && <p className="message-text">{message}</p>}
+            {error && <Error error={error}/>}
         </form>
     )
 }
