@@ -57,6 +57,7 @@
 
 hr {
   border: solid 1px black;
+  /* top: 70px; */
   width: 100%;
 }
 
@@ -81,3 +82,11 @@ hr {
   opacity: 70%;
   width: 100%;
 }
+
+.message-text {
+  color: #cd3541;
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+}
+
