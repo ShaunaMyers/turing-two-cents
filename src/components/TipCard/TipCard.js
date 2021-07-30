@@ -13,9 +13,9 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       <h2>{title}</h2>
       <hr />
       <p className="description">{description}</p>
-      <div className='details'>
-      {/* <p>Mod: {mod}</p> */}
-      <p>Your Rating: <Rating onClick={(value) => handleRating(value, id)}
+      <div className='rating-details'>
+      <p>Your Rating:</p>
+      <p><Rating onClick={(value) => handleRating(value, id)}
       // emptySymbol={<img src="assets/images/star-empty.png" className="icon" />}
       // fullSymbol={<img src="assets/images/star-full.png" className="icon" />}
       placeholderRating={rating}
