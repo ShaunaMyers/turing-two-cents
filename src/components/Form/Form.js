@@ -60,5 +60,5 @@ Form.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     mod: PropTypes.number,
-    message: PropTypes.string
+    error: PropTypes.string
   };
