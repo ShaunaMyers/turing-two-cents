@@ -7,7 +7,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
     const [message, setMessage] = useState('');
-    
+
     let timer;
 
     const onAddTip = (e) => {
@@ -46,7 +46,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
                 <option value="4">Mod 4</option>
             </select>
             <button className='new-tip-button'onClick={onAddTip}>Submit a Tip</button>
-            {message && <p>{message}</p>}
+            {message && <p className="message-text">{message}</p>}
         </form>
     )
 }
