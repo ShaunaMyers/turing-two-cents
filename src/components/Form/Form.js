@@ -10,7 +10,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const onAddTip = (e) => {
         e.preventDefault();
         if (title && description) {
-            handleAddTip({ title, description, mod, rating: 0, date: Date.now(), id: Math.random() });
+            handleAddTip({ title, description, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
         }
         validateInputs(title, description);
         clearInputs();
