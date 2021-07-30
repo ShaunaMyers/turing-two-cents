@@ -90,3 +90,10 @@ hr {
   font-weight: bold;
 }
 
+.filled-star {
+  color: #60f2fc;
+}
+
+.empty-star {
+  color: #E6E6E6;
+}
