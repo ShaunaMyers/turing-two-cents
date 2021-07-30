@@ -20,7 +20,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
             setError('Title is too long. Only 50 characters allowed.')
             timer = setTimeout(() => setError(''), 3000)
         } else if (description.length > 500) {
-            setError('Description is too long. Only 50 characters allowed')
+            setError('Description is too long. Only 500 characters allowed')
             timer = setTimeout(() => setError(''), 3000)
         }
         validateInputs(title, description);
