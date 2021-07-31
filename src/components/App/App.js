@@ -29,7 +29,6 @@ const App = () => {
   }, []);
 
   const handleAddTip = (newTip) => {
-    setAdvice([...advice, newTip])
     addTip(newTip)
     .then(() => {
       fetchData()
@@ -48,7 +47,6 @@ const App = () => {
     })
     setAdvice(updatedAdvice)
     updateRating(rating, id)
-    console.log(advice)
   }
   
   const validateInputs = (title, description) => {  
