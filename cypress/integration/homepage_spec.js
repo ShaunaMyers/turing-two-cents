@@ -34,7 +34,7 @@ describe('Home Page', () => {
   
   })
 
-  it.only('Should be able to select a module from the drop down menu', () => {
+  it('Should be able to select a module from the drop down menu', () => {
     cy
       .get('select')
       .select('4')
@@ -43,12 +43,45 @@ describe('Home Page', () => {
   })
   
 
-  it('Should be able fill out form and populate card container with card', () => {
-    cy.get('[placeholder="Tip Title"]').type('Text for title')
-    cy.get('[placeholder="Description"]').type('Text for Description')
-    cy.get('select').select('2')
-    cy.get('.new-tip-button').click()
-    cy.get(':nth-child(4) > .details > :nth-child(1)').contains('2')
+  it.only('Should be able fill out form, click submit, and populate card container with card', () => {
+    cy
+      .get('[placeholder="Tip Title"]')
+      .type('Text for title')
+      .get('[placeholder="Description"]')
+      .type('Text for Description')
+      .get('select')
+      .select('2')
+
+    cy
+      .intercept('POST', 'https://turingtwocentapi.herokuapp.com/', {
+        statusCode: 201,
+        body: {
+          title: 'Text for title',
+          description: 'Text for description',
+          mod: 2,
+          rating: 0,
+          date: 1627599413278
+        },
+      })
+
+      .get('.new-tip-button')
+      .click()
+
+      cy
+        .fixture('postedTipCard.json').then((tipCardData) => {
+      cy
+        .intercept('https://turingtwocentapi.herokuapp.com/', tipCardData)
+        })
+      cy
+        .visit('http://localhost:3000/')
+
+        // .get('.new-tip-button')
+        // .click()
+
+      // cy
+      //   .visit('http://localhost:3000/')
+        .get('.tip-card')
+        .should('have.length', '4')
   })
 
   it('Should not populate cards if all inputs are not filled out', () => {
