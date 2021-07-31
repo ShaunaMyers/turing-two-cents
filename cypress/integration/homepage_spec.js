@@ -183,7 +183,7 @@ describe('Home Page', () => {
       .contains('You have successfully rated this tip')
   })
 
-  it.only('Should be able to see different colored stars after to rate a tip', () => {
+  it('Should be able to see different colored stars after to rate a tip', () => {
     cy
       .get('.tip-jar > :nth-child(2)')
       .get(':nth-child(2) > .rating-details > :nth-child(2) > [style="display: inline-block; direction: ltr;"] > :nth-child(4) > :nth-child(1) > .svg-inline--fa > path')
