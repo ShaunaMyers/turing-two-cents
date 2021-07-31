@@ -13,7 +13,7 @@
 ## Overview and Project Goals
 Welcome to the Turing Tip Jar - where students and alum can choose to simply peruse tips, or can leave tips to help others wade the trecherous Turing waters! 
 
-The goal of this Mod3 group project [project](https://frontend.turing.edu/projects/module-3/stretch.html) was to stretch boundaries and branch out on our own to teach ourselves new tech. We chose to dive into the backend technologies. We built our own server using express and built a database using PostgreSQL. We deployed our database to Heroku and built our frontend using React.
+The goal of this Mod3 group [project](https://frontend.turing.edu/projects/module-3/stretch.html) was to stretch boundaries and branch out on our own to teach ourselves new tech. We chose to dive into the backend technologies. We built our own server using express and built a database using PostgreSQL. We deployed our database to Heroku and built our frontend using React.
 
 ### Learning Goals
 
@@ -90,7 +90,6 @@ If you would like to contribute, please fork this repository and clone it down t
     <img alt="CSS3 Badge" src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff&style=flat-square" />
     <img alt="Sass Badge" src="https://img.shields.io/badge/Sass-C69?logo=sass&logoColor=fff&style=flat-square" />
     <img alt="Express Badge" src="https://img.shields.io/badge/Express-000?logo=express&logoColor=fff&style=flat-square" />
-    <img alt="PostgreSQL Badge" src="https://img.shields.io/badge/-PostgreSQL-blue" />
     <img alt="Cypress Badge" src="https://img.shields.io/badge/Cypress-17202C?logo=cypress&logoColor=fff&style=flat-square" />
 </p>
 
