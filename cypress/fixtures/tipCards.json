@@ -5,20 +5,20 @@
       "description": "When in doubt, keep your head down",
       "mod": 4,
       "rating": 2,
-      "date": "11/22/1963"
+      "date": 1627391413078
     },
     {
       "title": "Play Etiquette",
       "description": "Don't be disruptive during a play, or you might just lose your head",
       "mod": 2,
       "rating": 2,
-      "date": "02/12/1865"
+      "date": 1627113313278
     },
     {
       "title": "How to Duke",
       "description": "Do the opposite of Franz Ferdinand",
       "mod": 1,
       "rating": 2,
-      "date": "12/18/1914"
+      "date": 1620593313178
     }
 ]}

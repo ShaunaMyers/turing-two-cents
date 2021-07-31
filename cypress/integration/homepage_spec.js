@@ -6,7 +6,7 @@ describe('Home Page', () => {
     cy.visit('http://localhost:3000/')
   })
 
-  it('Should be able to visit http://localhost:3000 and see a title rendered', () => {
+  it.only('Should be able to visit http://localhost:3000 and see a title rendered', () => {
     cy
       .get('.nav-header')
       .contains('Turing Tip Jar')
