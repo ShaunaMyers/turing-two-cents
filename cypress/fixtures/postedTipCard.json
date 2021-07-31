@@ -1,6 +1,7 @@
 {
     "rows": [
       {
+        "id": 1,
         "title": "Duck",
         "description": "When in doubt, keep your head down",
         "mod": 4,
@@ -8,6 +9,7 @@
         "date": 1627391413078
       },
       {
+        "id": 2,
         "title": "Play Etiquette",
         "description": "Don't be disruptive during a play, or you might just lose your head",
         "mod": 2,
@@ -15,6 +17,7 @@
         "date": 1627113313278
       },
       {
+        "id": 3,
         "title": "How to Duke",
         "description": "Do the opposite of Franz Ferdinand",
         "mod": 1,
@@ -22,6 +25,7 @@
         "date": 1620593313178
       },
       {
+        "id": 4,
         "title": "Text for title",
         "description": "Text for description",
         "mod": 2,

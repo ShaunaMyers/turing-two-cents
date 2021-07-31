@@ -174,14 +174,13 @@ describe('Home Page', () => {
       .contains('404 Not Found')
   })
 
-  // it.only('Should be able to see a message when all cards have been deleted', () => {
-  //   cy
-  //     .get('.tip-card > .delete')
-  //     .click()
-      // .children(':nth-child(1)')
-      // .get(':nth-child(1)')
-      // .children('.delete')
-      // .click()
-  // })  
+  it('Should be able to press delete button for a specific card and no longer see that card on the screen', () => {
+    cy
+      .get('.tip-jar > :nth-child(2)')
+      .children(':nth-child(2) > .delete')
+      .click()
+      .get('.tip-jar')
+      .should('not.have.value', 'Play Etiquette')
+  }) 
 
 })
