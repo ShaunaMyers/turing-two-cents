@@ -26,11 +26,19 @@ describe('Home Page', () => {
   
   })
 
-  it.only('Should be able to type a description into the form input description field', () => {
+  it('Should be able to type a description into the form input description field', () => {
     cy
       .get('[placeholder="Description"]')
       .type('Text for description')
       .should('have.value', 'Text for description');
+  
+  })
+
+  it.only('Should be able to select a module from the drop down menu', () => {
+    cy
+      .get('select')
+      .select('4')
+      .should('have.value', '4')
   
   })
   
