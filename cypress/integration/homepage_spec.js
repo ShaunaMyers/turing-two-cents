@@ -89,7 +89,19 @@ describe('Home Page', () => {
       .contains('Please fill out title & description fields.')
   })
 
-  it.only('Should not add card if only one input is filled out', () => {
+  it.only('Should show an error message if title input is longer than 50 characters', () => {
+    cy
+      .get('[placeholder="Tip Title"]')
+      .type('This is a really long title and I have a lot to say but I probably should have placed this in the description and not in the title but when you have this much to say you cannot be contained. No one dictates what I do! I run my own life!')
+      .get('[placeholder="Description"]')
+      .type('Text for description')
+      .get('.new-tip-button')
+      .click()
+      .get('p')
+      .contains('Title is too long. Only 50 characters allowed.')
+  })
+
+  it('Should not add card if only one input is filled out', () => {
     cy
       .get('[placeholder="Tip Title"]')
       .type('Text for title')
@@ -98,9 +110,6 @@ describe('Home Page', () => {
       .get('.tip-jar')
       .children('.tip-card')
       .should('have.length', 3)
-      
-      // .get(':nth-child(3) > p')
-      // .contains('Please fill out title & description fields.')
   })
 
   
