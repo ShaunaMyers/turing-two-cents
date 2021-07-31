@@ -97,13 +97,35 @@ describe('Home Page', () => {
       .get(':nth-child(3) > p').contains('Please fill out title & description fields.')
   })
 
-
+  
   it('Should be able to click on a module button and see only cards pertaining to that module', () => {
+    cy
+    .get('[href="/module/1"]')
+    .click()
+    .get('h2')
+    .contains('How to Duke')
+  })
+  
+  it('Should be able to click on Show All and see all the cards', () => { 
     cy
       .get('[href="/module/1"]')
       .click()
-      .get('h2')
-      .contains('How to Duke')
+      .get('.nav-header > :nth-child(6)')
+      .click()
+      .get('.tip-jar')
+      .children('.tip-card')
+      .should('have.length', 3)
+  })
+
+  it.only('Should be able to click on the header title and return home', () => { 
+    cy
+      .get('[href="/module/1"]')
+      .click()
+
+      .get('h1')
+      .click()
+      .url()
+      .should('eq','http://localhost:3000/')
   })
 
   it('Should be able to click Back Button after clicking Module 1 to return to Home Page', () => {
@@ -117,12 +139,4 @@ describe('Home Page', () => {
       .should('eq','http://localhost:3000/')
   })
 
-  it('Should be able to click on Show All and see all the cards', () => { 
-    cy
-      .get('[href="/module/1"]').click()
-      .get('.nav-header > :nth-child(6)').click()
-      .get('.tip-jar')
-      .children('.tip-card')
-      .should('have.length', 3)
-  })
 })
