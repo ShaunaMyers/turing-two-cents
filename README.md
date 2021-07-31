@@ -42,19 +42,23 @@ To solidify and demonstrate the understanding of:
 
 #### View All Tips
 - A user may view all tip cards previously added<br>
+![Demo browsing tips on main page](https://user-images.githubusercontent.com/74690897/127753461-248752da-56b1-4415-985c-3c59a85c1849.gif)
+
 
 
 
 #### Add a tip
 - The user may fill out the input fields and click submit to add a tip<br>
+![Demo adding tip to main page](https://user-images.githubusercontent.com/74690897/127753669-362810f6-2166-41bf-ae82-69d1682d0f97.gif)
+
 
 
 #### Search tips added by module number
 - The user may click on a module button in the header to search tips by module number<br>
+![Demo searching for tips by module](https://user-images.githubusercontent.com/74690897/127753872-81791998-5957-4858-888e-decd22fcb0a9.gif)
+
 
  
-
-
 #### Mobile View/Responsive
 - Site is responsive and will change layouts across desktop, tablet, and phone screens<br>
 
