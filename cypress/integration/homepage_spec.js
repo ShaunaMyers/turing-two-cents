@@ -183,6 +183,16 @@ describe('Home Page', () => {
       .contains('You have successfully rated this tip')
   })
 
+  it.only('Should be able to see different colored stars after to rate a tip', () => {
+    cy
+      .get('.tip-jar > :nth-child(2)')
+      .get(':nth-child(2) > .rating-details > :nth-child(2) > [style="display: inline-block; direction: ltr;"] > :nth-child(4) > :nth-child(1) > .svg-inline--fa > path')
+      .click()
+      .get(':nth-child(4) > [style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"] > .svg-inline--fa')
+      .should('have.class', 'filled-star')
+      .should('have.css', 'color', 'rgb(96, 242, 252)')
+  })
+
   it('Should be able to press delete button for a specific card and no longer see that card on the screen', () => {
     cy
       .get(':nth-child(2) > .delete')
