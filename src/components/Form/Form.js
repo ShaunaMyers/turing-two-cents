@@ -14,7 +14,8 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const onAddTip = (e) => {
         e.preventDefault();
         if (title && description && title.length < 51 && description.length < 501) {
-            handleAddTip({ title, description, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
+            const {formattedTitle, formattedDescription} = cleanInputs([title, description])
+            handleAddTip({ title: formattedTitle, description: formattedDescription, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
             setError('')
         } else if (title.length > 50) {
             setError('Title is too long. Only 50 characters allowed.')
@@ -25,6 +26,19 @@ const Form = ({ handleAddTip, validateInputs }) => {
         }
         validateInputs(title, description);
         clearInputs();
+    }
+
+    const cleanInputs = (inputs) => {
+        let formattedInputs = {formattedTitle: '', formattedDescription: ''}
+        Object.keys(formattedInputs).forEach((category, index) => {
+            formattedInputs[category] = inputs[index].split('').map(letter => {
+                if (letter === "'") {
+                    letter = "''"
+                }
+                return letter
+            }).join('')
+        })
+        return formattedInputs;
     }
 
     const clearInputs = () => {
