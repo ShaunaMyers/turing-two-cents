@@ -23,7 +23,6 @@ describe('Home Page', () => {
       .get('[placeholder="Tip Title"]')
       .type('Text for title')
       .should('have.value', 'Text for title');
-  
   })
 
   it('Should be able to type a description into the form input description field', () => {
@@ -31,7 +30,6 @@ describe('Home Page', () => {
       .get('[placeholder="Description"]')
       .type('Text for description')
       .should('have.value', 'Text for description');
-  
   })
 
   it('Should be able to select a module from the drop down menu', () => {
@@ -39,7 +37,6 @@ describe('Home Page', () => {
       .get('select')
       .select('4')
       .should('have.value', '4')
-  
   })
   
 
@@ -84,26 +81,35 @@ describe('Home Page', () => {
       .should('have.length', '4')
   })
 
-  it('Should not populate cards if all inputs are not filled out', () => {
+  it('Should show an error message if all inputs are not filled out', () => {
     cy
-      .get('.new-tip-button').click()
-      .get(':nth-child(3) > p').contains('Please fill out title & description fields.')
+      .get('.new-tip-button')
+      .click()
+      .get(':nth-child(3) > p')
+      .contains('Please fill out title & description fields.')
   })
 
-  it('Should not add card if only one input is filled out', () => {
+  it.only('Should not add card if only one input is filled out', () => {
     cy
-      .get('[placeholder="Tip Title"]').type('Text for title')
-      .get('.new-tip-button').click()
-      .get(':nth-child(3) > p').contains('Please fill out title & description fields.')
+      .get('[placeholder="Tip Title"]')
+      .type('Text for title')
+      .get('.new-tip-button')
+      .click()
+      .get('.tip-jar')
+      .children('.tip-card')
+      .should('have.length', 3)
+      
+      // .get(':nth-child(3) > p')
+      // .contains('Please fill out title & description fields.')
   })
 
   
   it('Should be able to click on a module button and see only cards pertaining to that module', () => {
     cy
-    .get('[href="/module/1"]')
-    .click()
-    .get('h2')
-    .contains('How to Duke')
+      .get('[href="/module/1"]')
+      .click()
+      .get('h2')
+      .contains('How to Duke')
   })
   
   it('Should be able to click on Show All and see all the cards', () => { 
@@ -117,11 +123,10 @@ describe('Home Page', () => {
       .should('have.length', 3)
   })
 
-  it.only('Should be able to click on the header title and return home', () => { 
+  it('Should be able to click on the header title and return home', () => { 
     cy
       .get('[href="/module/1"]')
       .click()
-
       .get('h1')
       .click()
       .url()
