@@ -43,7 +43,7 @@ describe('Home Page', () => {
   })
   
 
-  it.only('Should be able fill out form, click submit, and populate card container with card', () => {
+  it('Should be able fill out form, click submit, and populate card container with card', () => {
     cy
       .get('[placeholder="Tip Title"]')
       .type('Text for title')
@@ -67,52 +67,61 @@ describe('Home Page', () => {
       .get('.new-tip-button')
       .click()
 
-      cy
-        .fixture('postedTipCard.json').then((tipCardData) => {
-      cy
-        .intercept('https://turingtwocentapi.herokuapp.com/', tipCardData)
-        })
-      cy
-        .visit('http://localhost:3000/')
+    cy
+      .fixture('postedTipCard.json').then((tipCardData) => {
+    cy
+      .intercept('https://turingtwocentapi.herokuapp.com/', tipCardData)
+      })
+    cy
+      .visit('http://localhost:3000/')
 
         // .get('.new-tip-button')
         // .click()
 
       // cy
       //   .visit('http://localhost:3000/')
-        .get('.tip-card')
-        .should('have.length', '4')
+      .get('.tip-card')
+      .should('have.length', '4')
   })
 
   it('Should not populate cards if all inputs are not filled out', () => {
     cy
       .get('.new-tip-button').click()
-    cy.get(':nth-child(3) > p').contains('Please fill out title & description fields.')
+      .get(':nth-child(3) > p').contains('Please fill out title & description fields.')
   })
 
   it('Should not add card if only one input is filled out', () => {
-    cy.get('[placeholder="Tip Title"]').type('Text for title')
-    cy.get('.new-tip-button').click()
-    cy.get(':nth-child(3) > p').contains('Please fill out title & description fields.')
+    cy
+      .get('[placeholder="Tip Title"]').type('Text for title')
+      .get('.new-tip-button').click()
+      .get(':nth-child(3) > p').contains('Please fill out title & description fields.')
   })
 
 
-  it('Should be able to click on Module 1 and see only cards pertaining to Module 1', () => {
-    cy.get('[href="/module/1"]').click()
-    cy.get('h2').contains('How to Duke')
+  it('Should be able to click on a module button and see only cards pertaining to that module', () => {
+    cy
+      .get('[href="/module/1"]')
+      .click()
+      .get('h2')
+      .contains('How to Duke')
   })
 
   it('Should be able to click Back Button after clicking Module 1 to return to Home Page', () => {
-    cy.get('[href="/module/1"]').click()
-    cy.url().should('eq','http://localhost:3000/module/1')
-    cy.go('back')
-    cy.url().should('eq','http://localhost:3000/')
+    cy
+      .get('[href="/module/1"]')
+      .click()
+      .url()
+      .should('eq','http://localhost:3000/module/1')
+      .go('back')
+      .url()
+      .should('eq','http://localhost:3000/')
   })
 
   it('Should be able to click on Show All and see all the cards', () => { 
-    cy.get('[href="/module/1"]').click()
-    cy.get('.nav-header > :nth-child(6)').click()
-    cy.get('.tip-jar')
+    cy
+      .get('[href="/module/1"]').click()
+      .get('.nav-header > :nth-child(6)').click()
+      .get('.tip-jar')
       .children('.tip-card')
       .should('have.length', 3)
   })
