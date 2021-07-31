@@ -6,7 +6,7 @@ describe('Home Page', () => {
     cy.visit('http://localhost:3000/')
   })
 
-  it('Should be able to visit http://localhost:3000 and see a header rendered', () => {
+  it('Should be able to visit http://localhost:3000 and see a title rendered', () => {
     cy
       .get('.nav-header')
       .contains('Turing Tip Jar')
@@ -89,7 +89,7 @@ describe('Home Page', () => {
       .contains('Please fill out title & description fields.')
   })
 
-  it.only('Should show an error message if title input is longer than 50 characters', () => {
+  it('Should show an error message if title input is longer than 50 characters', () => {
     cy
       .get('[placeholder="Tip Title"]')
       .type('This is a really long title and I have a lot to say but I probably should have placed this in the description and not in the title but when you have this much to say you cannot be contained. No one dictates what I do! I run my own life!')
@@ -99,6 +99,20 @@ describe('Home Page', () => {
       .click()
       .get('p')
       .contains('Title is too long. Only 50 characters allowed.')
+  })
+
+  it('Should show an error message if description input is longer than 500 characters', () => {
+    cy
+      .get('[placeholder="Tip Title"]')
+      .type('Text for title')
+      .get('[placeholder="Description"]')
+      .type('This is a really long title and I have a lot to say but I probably should have placed this in the description and not in the title but when you have this much to say you cannot be contained. No one dictates what I do! I run my own life! And now I have even more to say because I took a deep breath and thought about my life and there is so much I want to share but I just need to take a drink of water first...then let me continue. Is this 500 characters yet? Let me check...Nope, I guess it is not. Hey.')
+      .get('select')
+      .select('3')
+      .get('.new-tip-button')
+      .click()
+      .get('p')
+      .contains('Description is too long. Only 500 characters allowed')
   })
 
   it('Should not add card if only one input is filled out', () => {

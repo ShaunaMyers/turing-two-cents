@@ -2,21 +2,21 @@
   "rows": [
     {
       "title": "Duck",
-      "desciption": "When in doubt, keep your head down",
+      "description": "When in doubt, keep your head down",
       "mod": 4,
       "rating": 2,
       "date": "11/22/1963"
     },
     {
       "title": "Play Etiquette",
-      "desciption": "Don't be disruptive during a play, or you might just lose your head",
+      "description": "Don't be disruptive during a play, or you might just lose your head",
       "mod": 2,
       "rating": 2,
       "date": "02/12/1865"
     },
     {
       "title": "How to Duke",
-      "desciption": "Do the opposite of Franz Ferdinand",
+      "description": "Do the opposite of Franz Ferdinand",
       "mod": 1,
       "rating": 2,
       "date": "12/18/1914"
