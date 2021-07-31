@@ -174,6 +174,15 @@ describe('Home Page', () => {
       .contains('404 Not Found')
   })
 
+  it('Should be able to see a message when you rate a tip', () => {
+    cy
+      .get('.tip-jar > :nth-child(2)')
+      .get(':nth-child(2) > .rating-details > :nth-child(2) > [style="display: inline-block; direction: ltr;"] > :nth-child(4) > :nth-child(1) > .svg-inline--fa > path')
+      .click()
+      .get('p')
+      .contains('You have successfully rated this tip')
+  })
+
   it('Should be able to press delete button for a specific card and no longer see that card on the screen', () => {
     cy
       .get(':nth-child(2) > .delete')
