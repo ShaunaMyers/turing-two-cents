@@ -1,6 +1,11 @@
 export const getTips = () => {
   return fetch('https://turingtwocentapi.herokuapp.com/')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw Error(response.status)
+      }
+      return response.json()
+    })
     .catch(err => console.log(err))
 };
 
@@ -12,7 +17,12 @@ export const addTip = (newTip) => {
     },
     body: JSON.stringify(newTip)
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw Error(response.status)
+    }
+    return response.json()
+  })
   .catch(err => console.log(err))
 };
 
@@ -24,7 +34,12 @@ export const deleteTip = (id) => {
     },
     body: JSON.stringify({id})
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw Error(response.status)
+    }
+    return response.json()
+  })
   .catch(err => console.log(err))
 };
 
@@ -36,6 +51,11 @@ export const updateRating = (rating, id) => {
     },
     body: JSON.stringify({rating, id})
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw Error(response.status)
+    }
+    return response.json()
+  })
   .catch(err => console.log(err))
 };
