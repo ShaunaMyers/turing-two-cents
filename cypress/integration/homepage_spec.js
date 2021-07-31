@@ -6,9 +6,16 @@ describe('Home Page', () => {
     cy.visit('http://localhost:3000/')
   })
 
-  it('Should be able to visit http://localhost:3000 and see a header', () => {
-    cy.get('.nav-header').contains('Turing Tip Jar')
-    cy.get('form').should('be.visible')
+  it('Should be able to visit http://localhost:3000 and see a header rendered', () => {
+    cy
+      .get('.nav-header')
+      .contains('Turing Tip Jar')
+  })
+
+  it('Should be able to visit http://localhost:3000 and see a form rendered', () => {
+    cy
+      .get('form')
+      .should('be.visible')
   })
 
   it('Should not populate card if all inputs are not filled out', () => {
