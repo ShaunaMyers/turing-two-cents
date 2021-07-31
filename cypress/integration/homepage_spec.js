@@ -176,11 +176,22 @@ describe('Home Page', () => {
 
   it('Should be able to press delete button for a specific card and no longer see that card on the screen', () => {
     cy
-      .get('.tip-jar > :nth-child(2)')
-      .children(':nth-child(2) > .delete')
+      .get(':nth-child(2) > .delete')
       .click()
       .get('.tip-jar')
       .should('not.have.value', 'Play Etiquette')
   }) 
+
+  it('Should be able to delete all cards and see a message to add a tip card', () => {
+    cy
+      .get(':nth-child(1) > .delete')
+      .click()
+      .get(':nth-child(1) > .delete')
+      .click()
+      .get(':nth-child(1) > .delete')
+      .click()
+      .get('p')
+      .contains('Oh no! All out of advice! Please contribute your tip to our tip jar.')
+  })
 
 })
