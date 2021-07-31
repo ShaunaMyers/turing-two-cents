@@ -2,11 +2,9 @@
   align-items: center;
   background-color: white;
   border-radius: 25px;
-  /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* padding: 0% 7% 5%; */
   text-align: center;
   height: 100%;
   width: 100%;
@@ -17,8 +15,6 @@
 }
 
 .tip-card:hover {
-  /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-   */
   box-shadow: rgba(0, 0, 0, 0.22) 0px 39px 83px;
   transform: translate3d(0px, -1px, 0px);
 }
@@ -49,15 +45,8 @@
   transition: 500ms;
 }
 
-/* .rating-details {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-} */
-
 hr {
   border: solid 1px black;
-  /* top: 70px; */
   width: 100%;
 }
 
