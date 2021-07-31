@@ -167,6 +167,13 @@ describe('Home Page', () => {
       .contains('How to Duke')
   })
 
+  it('Should be able to see an error message when typing in a url that is not valid', () => {
+    cy
+      .visit('http://localhost:3000/999')
+      .get('p')
+      .contains('404 Not Found')
+  })
+
   // it.only('Should be able to see a message when all cards have been deleted', () => {
   //   cy
   //     .get('.tip-card > .delete')
