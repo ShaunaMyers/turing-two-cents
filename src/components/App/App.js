@@ -74,6 +74,9 @@ const App = () => {
     const filtered = advice.filter(tip => tip.id !== id)
     setAdvice(filtered)
     deleteTip(id)
+    .catch(err => {
+      setError(`${err}`)
+    })
     !filtered.length &&
       setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
   }
