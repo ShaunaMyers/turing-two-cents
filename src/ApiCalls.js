@@ -36,11 +36,11 @@ export const deleteTip = (id) => {
   })
   .then(response => {
     if (!response.ok) {
-      throw Error(response.status)
+      throw Error('Your delete request was not successful')
     }
-    return response.json()
+    // return response.json()
   })
-  .catch(err => console.log(err))
+  // .catch(err => console.log(err))
 };
 
 export const updateRating = (rating, id) => {
