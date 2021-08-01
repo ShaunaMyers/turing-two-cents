@@ -7,6 +7,8 @@ import Loader from '../Loader/Loader';
 import './App.css';
 import { Route, NavLink, Switch, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
@@ -82,6 +84,7 @@ const App = () => {
     <main className='main'>
       <header className='nav-header'>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
+        <FontAwesomeIcon className="hamburger" icon={faBars}/>
         <NavLink to='/module/1' activeClassName='nav-button' className='mod-button'>Module 1</NavLink>
         <NavLink to='/module/2' activeClassName='nav-button' className='mod-button'>Module 2</NavLink>
         <NavLink to='/module/3' activeClassName='nav-button' className='mod-button'>Module 3</NavLink>
