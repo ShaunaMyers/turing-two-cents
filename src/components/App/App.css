@@ -52,11 +52,15 @@ h1:hover {
   background-color: #056475;
 }
 
+.hamburger {
+  cursor: pointer;
+  width: 400%;
+}
+
 a {
   margin: 1%;
   text-decoration: none;
 }
-
 
 @media only screen and (max-width: 768px) {
   .nav-header {
