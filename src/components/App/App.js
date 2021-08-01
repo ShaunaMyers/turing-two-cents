@@ -13,6 +13,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
+  const [modButton, setModButton] = useState("mod-button");
   let timer;
 
   const fetchData = async () => {
@@ -80,16 +81,27 @@ const App = () => {
       setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
   }
 
+  const toggleClass = () => {
+    console.log('hi')
+    if (modButton === "mod-button") {
+      console.log('they equal')
+      setModButton("mod-button-show") 
+      console.log("mod btn show", modButton)
+    } else {
+      setModButton("mod-button");
+    }
+  }
+
   return (
     <main className='main'>
       <header className='nav-header'>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
-        <FontAwesomeIcon className="fa-2x hamburger" icon={faBars}/>
-        <NavLink to='/module/1' activeClassName='nav-button' className='mod-button'>Module 1</NavLink>
-        <NavLink to='/module/2' activeClassName='nav-button' className='mod-button'>Module 2</NavLink>
-        <NavLink to='/module/3' activeClassName='nav-button' className='mod-button'>Module 3</NavLink>
-        <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
-        <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
+        <FontAwesomeIcon onClick={toggleClass} className="fa-2x hamburger" icon={faBars}/>
+        <NavLink to='/module/1' activeClassName='nav-button' className={modButton}>Module 1</NavLink>
+        <NavLink to='/module/2' activeClassName='nav-button' className={modButton}>Module 2</NavLink>
+        <NavLink to='/module/3' activeClassName='nav-button' className={modButton}>Module 3</NavLink>
+        <NavLink to='/module/4' activeClassName='nav-button' className={modButton}>Module 4</NavLink>
+        <NavLink exact to='/' activeClassName='nav-button' className={modButton}>Show All</NavLink>
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {error === 'Please fill out title & description fields.' 
