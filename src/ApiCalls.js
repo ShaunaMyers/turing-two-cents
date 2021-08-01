@@ -16,14 +16,15 @@ export const addTip = (newTip) => {
       'content-type': 'application/json',
     },
     body: JSON.stringify(newTip)
+    // body: JSON.stringify({banana: 'chicken'})
   })
   .then(response => {
     if (!response.ok) {
-      throw Error(response.status)
+      throw Error('Your new tip was not added, please try again')
     }
-    return response.json()
+    // return response.json()
   })
-  .catch(err => console.log(err))
+  // .catch(err => console.log(err))
 };
 
 export const deleteTip = (id) => {
