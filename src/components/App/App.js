@@ -51,15 +51,20 @@ const App = () => {
   }    
 
   const handleRating = (rating, id) => {
-    const updatedAdvice = advice.map( (tip) => {
-      if (tip.id === id) { 
-        tip.rating = rating
-      }
-      return tip
-    })
-    setAdvice(updatedAdvice)
     updateRating(rating, id)
+    .then(() => {
+      const updatedAdvice = advice.map( (tip) => {
+        if (tip.id === id) { 
+          tip.rating = rating
+        }
+        return tip
+      })
+      setAdvice(updatedAdvice)
+      setError('You successfully rated a card')
+      timer = setTimeout(() => setError(''), 5000)
+    })
     .catch(err => {
+      console.log('Theres an error')
       setError(`${err}`)
       timer = setTimeout(() => setError(''), 5000)
     })
