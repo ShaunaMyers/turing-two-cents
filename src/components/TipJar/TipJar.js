@@ -4,7 +4,7 @@ import './TipJar.css';
 import PropTypes from 'prop-types';
 import Error from '../Error/Error'
 
-const TipJar = ({ tips, handleDelete, handleRating }) => {
+const TipJar = ({ tips, handleDelete, handleRating, error }) => {
   tips.sort((a, b) => b.date - a.date)
 
   const formatDate = (date) => {
@@ -28,6 +28,7 @@ const TipJar = ({ tips, handleDelete, handleRating }) => {
           rating={tip.rating}
           date={tip.date}
           handleDelete={handleDelete}
+          error={error}
         />
     )
   });
