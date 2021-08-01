@@ -13,18 +13,27 @@ const App = () => {
   const [error, setError] = useState('');
   let timer;
 
-  const fetchData = async () => {
+  // const fetchData = async () => {
+  //   setError('');
+  //   try {
+  //     const result = await getTips();
+  //     setAdvice(result.rows);
+  //   } catch (error) {
+  //     setError('Oops, problem loading tips. Please refresh the page.');                      
+  //   }
+  // };
+
+  const fetchData = () => {
     setError('');
-    try {
-      const result = await getTips();
-      setAdvice(result.rows);
-    } catch (error) {
-      setError('Oops, problem loading tips. Please refresh the page.');                      
-    }
-  };
+    getTips()
+    .then(result => setAdvice(result.rows))
+    .catch(err => {
+      setError(`${err}`)
+    })
+  }
 
   useEffect(() => {
-    fetchData();
+    fetchData()
   }, []);
 
   const handleAddTip = (newTip) => {
@@ -97,8 +106,7 @@ const App = () => {
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {/* Do we need this either? */}
-      {/* {error === 'Please fill out title & description fields.' 
-      && <Error error={error}/>} */}
+      {error && <Error error={error}/>}
       <Switch>
         <Route exact path='/' render={() => {
           return (
