@@ -114,6 +114,20 @@ describe('Home Page', () => {
       .should('have.length', '4')
   })
 
+  it('Should be able to see a message when a tip card has been added to the page', () => {
+    cy
+      .get('[placeholder="Tip Title"]')
+      .type('Text for title')
+      .get('[placeholder="Description"]')
+      .type('Text for Description')
+      .get('select')
+      .select('2')
+      .get('.new-tip-button')
+      .click()
+      .get('p')
+      .contains('You have successfully submitted a tip card')
+  })
+
   it('Should show an error message if all inputs are not filled out', () => {
     cy
       .get('.new-tip-button')
@@ -122,7 +136,7 @@ describe('Home Page', () => {
       .contains('Please fill out title & description fields.')
   })
 
-  it('Should show an error message if title input is longer than 50 characters', () => {
+  it.only('Should show an error message if title input is longer than 50 characters', () => {
     cy
       .get('[placeholder="Tip Title"]')
       .type('This is a really long title and I have a lot to say but I probably should have placed this in the description and not in the title but when you have this much to say you cannot be contained. No one dictates what I do! I run my own life!')
@@ -131,7 +145,7 @@ describe('Home Page', () => {
       .get('.new-tip-button')
       .click()
       .get('p')
-      .contains('Title is too long. Only 50 characters allowed.')
+      .contains('Title is too long. Only 50 characters allowed')
   })
 
   it('Should show an error message if description input is longer than 500 characters', () => {

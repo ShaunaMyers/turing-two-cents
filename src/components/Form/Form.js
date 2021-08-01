@@ -8,6 +8,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
     const [error, setError] = useState('');
+    const [message, setMessage] = useState('')
 
     let timer;
 
@@ -15,9 +16,11 @@ const Form = ({ handleAddTip, validateInputs }) => {
         e.preventDefault();
         if (title && description && title.length < 51 && description.length < 501) {
             handleAddTip({ title, description, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
+            setMessage('You have successfully submitted a tip card')
+            timer = setTimeout(() => setMessage(''), 3000)
             setError('')
         } else if (title.length > 50) {
-            setError('Title is too long. Only 50 characters allowed.')
+            setError('Title is too long. Only 50 characters allowed')
             timer = setTimeout(() => setError(''), 3000)
         } else if (description.length > 500) {
             setError('Description is too long. Only 500 characters allowed')
@@ -47,6 +50,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
                 <option value="4">Mod 4</option>
             </select>
             <button className='new-tip-button'onClick={onAddTip}>Submit a Tip</button>
+            {message && <p className="message-text">{message}</p>}
             {error && <Error error={error}/>}
         </form>
     )
