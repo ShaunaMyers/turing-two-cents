@@ -56,3 +56,9 @@ a {
   margin: 1%;
   text-decoration: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .nav-header {
+    flex-direction: column;
+  }
+}
