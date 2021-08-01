@@ -2,7 +2,7 @@ export const getTips = () => {
   return fetch('https://turingtwocentapi.herokuapp.com/')
     .then(response => {
       if (!response.ok) {
-        throw Error(response.status)
+        throw Error('Oops, problem loading tips. Please refresh the page.')
       }
       return response.json()
     })
