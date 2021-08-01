@@ -87,16 +87,18 @@ const App = () => {
   }
 
   const handleDelete = (id) => {
-    const filtered = advice.filter(tip => tip.id !== id)
-    setAdvice(filtered)
     deleteTip(id)
+    .then(() => {
+      const filtered = advice.filter(tip => tip.id !== id)
+      setAdvice(filtered)
+    })
     .catch(err => {
       setError(`${err}`)
       timer = setTimeout(() => setError(''), 5000)
     })
-    !filtered.length &&
-      setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
-      timer = setTimeout(() => setError(''), 5000)
+    // !filtered.length &&
+    //   setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
+    //   timer = setTimeout(() => setError(''), 5000)
   }
 
   return (
@@ -113,32 +115,32 @@ const App = () => {
       {error !== 'Oops, problem loading tips. Please refresh the page.' && <Error error={error}/>}
       {error !== 'Oops, problem loading tips. Please refresh the page.'  
       ? <Switch>
-        <Route exact path='/' render={() => {
-          return (
-            <>
-             <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-            {evaluateLoaderAndError()}
-            </>
-          )
-        }}/>
-        <Route exact path='/module/:num' render={({match}) => {
-          let selectedMod =  parseInt(match.params.num)
-          let filtered = advice.filter(tip => tip.mod === selectedMod)
-          // !filtered.length && setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
-          // timer = setTimeout(() => setError(''), 5000)
-          return (
-            error !== 'Oops, problem loading tips. Please refresh the page.' 
-            ? <>
-                <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-                <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
+          <Route exact path='/' render={() => {
+            return (
+              <>
+              <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+              {evaluateLoaderAndError()}
               </>
-            : <Error error={error}/>        
-          )
-        }}/>
-        <Route path='/' render={() => 
-          <Error error={'404 Not Found'} />
-        }/>
-      </Switch>
+            )
+          }}/>
+          <Route exact path='/module/:num' render={({match}) => {
+            let selectedMod =  parseInt(match.params.num)
+            let filtered = advice.filter(tip => tip.mod === selectedMod)
+            // !filtered.length && setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
+            // timer = setTimeout(() => setError(''), 5000)
+            return (
+              error !== 'Oops, problem loading tips. Please refresh the page.'  
+              ? <>
+                  <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+                  <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
+                </>
+              : <Error error={error}/>        
+            )
+          }}/>
+          <Route path='/' render={() => 
+            <Error error={'404 Not Found'} />
+          }/>
+        </Switch>
       : <Error error={error} />
       }
       
