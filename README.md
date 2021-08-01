@@ -1,5 +1,5 @@
 
-# [*Turing Tip Jar*](https://turingtipjar.herokuapp.com//)
+# [*Turing Tip Jar*](https://turingtipjar.herokuapp.com/)
 
 ### Table of Contents
 - [Overview](#overview-and-project-goals)
