@@ -7,7 +7,6 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating, error}) => {
   
-  // const [message, setMessage] = useState('');
   const [cardId, setId] = useState('')
 
   let timer;
@@ -19,14 +18,11 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
   const onRating = (value, id) => {
     setId(id)
     handleRating(value, id)
-    // setMessage('You have successfully rated this tip')
-    // timer = setTimeout(() => setId(''), 1000)
   }
 
   const onDelete = () => {
     setId(id)
     handleDelete(id)
-    // timer = setTimeout(() => setId(''), 1000)
   }
 
   return (
@@ -49,7 +45,6 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       </div>
       <p>Date Submitted: {date}</p>
       <button onClick={(e) => {onDelete()}} className='delete'>Delete</button>
-      {/* {error.includes('rating') && <p className="message-text">{error}</p>} */}
       {error === 'Error: Your delete request was not successful' && cardId === id && <p className="message-text">{error}</p>}
     </article>
   )
