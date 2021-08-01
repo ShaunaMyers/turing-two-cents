@@ -114,6 +114,20 @@ describe('Home Page', () => {
       .should('have.length', '4')
   })
 
+  it.only('Should be able to see a message when a tip card has been added to the page', () => {
+    cy
+      .get('[placeholder="Tip Title"]')
+      .type('Text for title')
+      .get('[placeholder="Description"]')
+      .type('Text for Description')
+      .get('select')
+      .select('2')
+      .get('.new-tip-button')
+      .click()
+      .get('p')
+      .contains('You have successfully submitted a tip card')
+  })
+
   it('Should show an error message if all inputs are not filled out', () => {
     cy
       .get('.new-tip-button')
