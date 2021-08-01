@@ -6,7 +6,7 @@ export const getTips = () => {
       }
       return response.json()
     })
-    .catch(err => console.log(err))
+    // .catch(err => console.log(err))
 };
 
 export const addTip = (newTip) => {
