@@ -13,16 +13,6 @@ const App = () => {
   const [error, setError] = useState('');
   let timer;
 
-  // const fetchData = async () => {
-  //   setError('');
-  //   try {
-  //     const result = await getTips();
-  //     setAdvice(result.rows);
-  //   } catch (error) {
-  //     setError('Oops, problem loading tips. Please refresh the page.');                      
-  //   }
-  // };
-
   const fetchData = () => {
     setError('');
     getTips()
@@ -45,9 +35,6 @@ const App = () => {
       setError(`${err}`)
       timer = setTimeout(() => setError(''), 5000)
     })
-    // if (advice.length) {
-    //   setError('');
-    // }
   }    
 
   const handleRating = (rating, id) => {
@@ -64,7 +51,6 @@ const App = () => {
       timer = setTimeout(() => setError(''), 5000)
     })
     .catch(err => {
-      console.log('Theres an error')
       setError(`${err}`)
       timer = setTimeout(() => setError(''), 5000)
     })
@@ -75,15 +61,11 @@ const App = () => {
       setError('Please fill out title & description fields.')
       timer = setTimeout(() => setError(''), 5000)
     } else {
-      //do we need this??
       setError('')
     }
   } 
 
   const evaluateLoaderAndError = () => {
-    // if (error === 'Oops, problem loading tips. Please refresh the page.') {
-    //   return <Error error={error} />
-    // } else 
     if (!advice.length && !error) {
        return <Loader/>
     } else {
@@ -101,9 +83,6 @@ const App = () => {
       setError(`${err}`)
       timer = setTimeout(() => setError(''), 5000)
     })
-    // !filtered.length &&
-    //   setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
-    //   timer = setTimeout(() => setError(''), 5000)
   }
 
   return (
@@ -116,7 +95,6 @@ const App = () => {
         <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
         <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
       </header>
-      {/* {error !== 'Oops, problem loading tips. Please refresh the page.' && } */}
       {error !== 'Oops, problem loading tips. Please refresh the page.' && <Error error={error}/>}
       {error !== 'Oops, problem loading tips. Please refresh the page.'  
       ? <Switch>
@@ -131,8 +109,6 @@ const App = () => {
           <Route exact path='/module/:num' render={({match}) => {
             let selectedMod =  parseInt(match.params.num)
             let filtered = advice.filter(tip => tip.mod === selectedMod)
-            // !filtered.length && setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
-            // timer = setTimeout(() => setError(''), 5000)
             return (
               error !== 'Oops, problem loading tips. Please refresh the page.'  
               ? <>
@@ -148,8 +124,6 @@ const App = () => {
         </Switch>
       : <Error error={error} />
       }
-      
-      {/* Do we need this either? */}
     </main>
   )
 };
