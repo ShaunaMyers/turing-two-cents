@@ -54,6 +54,7 @@ h1:hover {
 
 .hamburger {
   cursor: pointer;
+  display: none;
   width: 400%;
 }
 
@@ -63,7 +64,15 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-  .nav-header {
+  /* .nav-header {
     flex-direction: column;
+  } */
+
+  .hamburger {
+    display: block;
+  }
+
+  .mod-button {
+    display: none;
   }
 }
