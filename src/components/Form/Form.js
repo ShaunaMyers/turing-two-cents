@@ -50,6 +50,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
                 <option value="4">Mod 4</option>
             </select>
             <button className='new-tip-button'onClick={onAddTip}>Submit a Tip</button>
+            {message && <p>{message}</p>}
             {error && <Error error={error}/>}
         </form>
     )
