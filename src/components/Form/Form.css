@@ -25,7 +25,6 @@ button {
 
 .new-tip-button {
   background-color: #cc193b;
-  /* background-color: #34a2a7; */
   border-radius: 30px;
   color: white;
   font-weight: bold;
@@ -47,4 +46,10 @@ select {
   border: solid black 2px;
   height: 30px;
   width: 75px;
+}
+
+.message-text {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
 }
