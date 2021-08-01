@@ -7,21 +7,22 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating, error}) => {
   
-  const [message, setMessage] = useState('');
+  // const [message, setMessage] = useState('');
   const [cardId, setId] = useState('')
 
   let timer;
 
   const onRating = (value, id) => {
-    handleRating(value, id);
-    setMessage('You have successfully rated this tip')
-    timer = setTimeout(() => setMessage(''), 3000)
+    setId(id)
+    handleRating(value, id)
+    // setMessage('You have successfully rated this tip')
+    timer = setTimeout(() => setId(''), 1000)
   }
 
   const onDelete = () => {
     setId(id)
     handleDelete(id)
-    timer = setTimeout(() => setId(''), 2000)
+    timer = setTimeout(() => setId(''), 1000)
   }
 
   return (
@@ -40,10 +41,11 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       placeholderSymbol={<FontAwesomeIcon icon={faStar} size="2x" className='filled-star' />}
       placeholderRating={rating}
       /></p>
-      {message && <p className="message-text">{message}</p>}
+      {error.includes('rated') || error.includes('rating') && cardId === id && <p className="message-text">{error}</p>}
       </div>
       <p>Date Submitted: {date}</p>
       <button onClick={(e) => {onDelete()}} className='delete'>Delete</button>
+      {/* {error.includes('rating') && <p className="message-text">{error}</p>} */}
       {error === 'Error: Your delete request was not successful' && cardId === id && <p className="message-text">{error}</p>}
     </article>
   )
