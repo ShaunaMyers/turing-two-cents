@@ -9,7 +9,7 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
   
   const [message, setMessage] = useState('');
   const [cardId, setId] = useState('')
-  
+
   let timer;
 
   const onRating = (value, id) => {
@@ -21,6 +21,7 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
   const onDelete = () => {
     setId(id)
     handleDelete(id)
+    timer = setTimeout(() => setId(''), 2000)
   }
 
   return (
