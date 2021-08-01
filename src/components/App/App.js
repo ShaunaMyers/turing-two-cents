@@ -76,9 +76,10 @@ const App = () => {
   } 
 
   const evaluateLoaderAndError = () => {
-    if (error) {
-      return <Error error={error} />
-    } else if (!advice.length && !error) {
+    // if (error === 'Oops, problem loading tips. Please refresh the page.') {
+    //   return <Error error={error} />
+    // } else 
+    if (!advice.length && !error) {
        return <Loader/>
     } else {
       return <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={ advice } />
@@ -108,14 +109,16 @@ const App = () => {
         <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
         <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
       </header>
-      {!error && <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>}
-      
-      {/* Do we need this either? */}
-      {/* {error && <Error error={error}/>} */}
-      <Switch>
+      {/* {error !== 'Oops, problem loading tips. Please refresh the page.' && } */}
+      {error !== 'Oops, problem loading tips. Please refresh the page.' && <Error error={error}/>}
+      {error !== 'Oops, problem loading tips. Please refresh the page.'  
+      ? <Switch>
         <Route exact path='/' render={() => {
           return (
-            evaluateLoaderAndError()
+            <>
+             <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+            {evaluateLoaderAndError()}
+            </>
           )
         }}/>
         <Route exact path='/module/:num' render={({match}) => {
@@ -124,8 +127,11 @@ const App = () => {
           // !filtered.length && setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
           // timer = setTimeout(() => setError(''), 5000)
           return (
-            !error 
-            ? <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
+            error !== 'Oops, problem loading tips. Please refresh the page.' 
+            ? <>
+                <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+                <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
+              </>
             : <Error error={error}/>        
           )
         }}/>
@@ -133,6 +139,10 @@ const App = () => {
           <Error error={'404 Not Found'} />
         }/>
       </Switch>
+      : <Error error={error} />
+      }
+      
+      {/* Do we need this either? */}
     </main>
   )
 };
