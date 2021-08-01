@@ -32,9 +32,12 @@ const App = () => {
     .then(() => {
       fetchData()
     })
-    if (advice.length) {
-      setError('');
-    }
+    .catch(err => {
+      setError(`${err}`)
+    })
+    // if (advice.length) {
+    //   setError('');
+    // }
   }    
 
   const handleRating = (rating, id) => {
