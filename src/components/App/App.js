@@ -28,7 +28,7 @@ const App = () => {
     getTips()
     .then(result => setAdvice(result.rows))
     .catch(err => {
-      setError(`${err}`)
+      setError('Oops, problem loading tips. Please refresh the page.')
     })
   }
 
@@ -43,6 +43,7 @@ const App = () => {
     })
     .catch(err => {
       setError(`${err}`)
+      timer = setTimeout(() => setError(''), 5000)
     })
     // if (advice.length) {
     //   setError('');
@@ -60,6 +61,7 @@ const App = () => {
     updateRating(rating, id)
     .catch(err => {
       setError(`${err}`)
+      timer = setTimeout(() => setError(''), 5000)
     })
   }
   
@@ -89,9 +91,11 @@ const App = () => {
     deleteTip(id)
     .catch(err => {
       setError(`${err}`)
+      timer = setTimeout(() => setError(''), 5000)
     })
     !filtered.length &&
       setError('Oh no! All out of advice! Please contribute your tip to our tip jar.');
+      timer = setTimeout(() => setError(''), 5000)
   }
 
   return (
@@ -104,7 +108,8 @@ const App = () => {
         <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
         <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
       </header>
-      <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
+      {!error && <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>}
+      
       {/* Do we need this either? */}
       {/* {error && <Error error={error}/>} */}
       <Switch>
@@ -116,9 +121,12 @@ const App = () => {
         <Route exact path='/module/:num' render={({match}) => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
-          !filtered.length && setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
+          // !filtered.length && setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
+          // timer = setTimeout(() => setError(''), 5000)
           return (
-            <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
+            !error 
+            ? <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
+            : <Error error={error}/>        
           )
         }}/>
         <Route path='/' render={() => 
