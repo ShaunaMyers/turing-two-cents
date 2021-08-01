@@ -1,5 +1,5 @@
 
-# [*Turing Tip Jar*](https://turingtwocentfe.herokuapp.com/)
+# [*Turing Tip Jar*](https://turingtipjar.herokuapp.com//)
 
 ### Table of Contents
 - [Overview](#overview-and-project-goals)
@@ -71,7 +71,7 @@ To solidify and demonstrate the understanding of:
 
 ## Installation and Viewing 
 
-Our application is deployed to Heroku. You may view the live application [here](https://turingtwocentfe.herokuapp.com/).
+Our application is deployed to Heroku. You may view the live application [here](https://turingtipjar.herokuapp.com/).
 
 To view our application on your local device:
 
