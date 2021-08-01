@@ -15,12 +15,11 @@ const App = () => {
 
   const fetchData = async () => {
     setError('');
-
     try {
       const result = await getTips();
       setAdvice(result.rows);
     } catch (error) {
-      setError('Oops, problem loading tips. Please refresh the page.');
+      setError('Oops, problem loading tips. Please refresh the page.');                      
     }
   };
 
@@ -47,6 +46,9 @@ const App = () => {
     })
     setAdvice(updatedAdvice)
     updateRating(rating, id)
+    .catch(err => {
+      setError(`${err}`)
+    })
   }
   
   const validateInputs = (title, description) => {  
@@ -59,7 +61,7 @@ const App = () => {
   } 
 
   const evaluateLoaderAndError = () => {
-    if (error && !advice.length) {
+    if (error) {
       return <Error error={error} />
     } else if (!advice.length && !error) {
        return <Loader/>
