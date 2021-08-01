@@ -3,5 +3,17 @@
   grid-gap: 2%;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
-  margin: 5% 2% 2% 2%
+  margin: 5% 2% 2% 2%;
+}
+
+@media only screen and (max-width: 786px) {
+  .tip-jar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .tip-jar {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
