@@ -5,9 +5,10 @@ import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating}) => {
+const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating, error}) => {
   
   const [message, setMessage] = useState('');
+  const [cardId, setId] = useState('')
   
   let timer;
 
@@ -15,6 +16,11 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
     handleRating(value, id);
     setMessage('You have successfully rated this tip')
     timer = setTimeout(() => setMessage(''), 3000)
+  }
+
+  const onDelete = () => {
+    setId(id)
+    handleDelete(id)
   }
 
   return (
@@ -36,7 +42,8 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       {message && <p className="message-text">{message}</p>}
       </div>
       <p>Date Submitted: {date}</p>
-      <button onClick={(e) => {handleDelete(id)}} className='delete'>Delete</button>
+      <button onClick={(e) => {onDelete()}} className='delete'>Delete</button>
+      {error === 'Error: Your delete request was not successful' && cardId === id && <p className="message-text">{error}</p>}
     </article>
   )
 }
