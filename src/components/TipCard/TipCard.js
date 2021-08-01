@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './TipCard.css';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
@@ -12,17 +12,21 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
 
   let timer;
 
+  useEffect(() => {
+    timer = setTimeout(() => setId(''), 1000)
+  }, [cardId])
+
   const onRating = (value, id) => {
     setId(id)
     handleRating(value, id)
     // setMessage('You have successfully rated this tip')
-    timer = setTimeout(() => setId(''), 1000)
+    // timer = setTimeout(() => setId(''), 1000)
   }
 
   const onDelete = () => {
     setId(id)
     handleDelete(id)
-    timer = setTimeout(() => setId(''), 1000)
+    // timer = setTimeout(() => setId(''), 1000)
   }
 
   return (
@@ -41,7 +45,7 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       placeholderSymbol={<FontAwesomeIcon icon={faStar} size="2x" className='filled-star' />}
       placeholderRating={rating}
       /></p>
-      {error.includes('rated') || error.includes('rating') && cardId === id && <p className="message-text">{error}</p>}
+      {(error.includes('rated') || error.includes('rating')) && cardId === id && <p className="message-text">{error}</p>}
       </div>
       <p>Date Submitted: {date}</p>
       <button onClick={(e) => {onDelete()}} className='delete'>Delete</button>
