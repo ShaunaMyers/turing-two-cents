@@ -47,5 +47,6 @@ export default TipJar;
 
 TipJar.propTypes = {
   tips: PropTypes.array,
-  handleDelete: PropTypes.func
+  handleDelete: PropTypes.func,
+  error: PropTypes.string
 }

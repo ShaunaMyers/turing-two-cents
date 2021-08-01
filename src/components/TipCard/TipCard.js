@@ -61,5 +61,6 @@ Tip.propTypes = {
   rating: PropTypes.number,
   date: PropTypes.string,
   handleDelete: PropTypes.func,
-  message: PropTypes.string
+  message: PropTypes.string,
+  error: PropTypes.string
 }
