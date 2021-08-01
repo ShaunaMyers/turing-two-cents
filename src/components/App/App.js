@@ -106,7 +106,7 @@ const App = () => {
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {/* Do we need this either? */}
-      {error && <Error error={error}/>}
+      {/* {error && <Error error={error}/>} */}
       <Switch>
         <Route exact path='/' render={() => {
           return (
@@ -116,6 +116,7 @@ const App = () => {
         <Route exact path='/module/:num' render={({match}) => {
           let selectedMod =  parseInt(match.params.num)
           let filtered = advice.filter(tip => tip.mod === selectedMod)
+          !filtered.length && setError('Oh no! All out of advice! Please contribute your tip to our tip jar.')
           return (
             <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered}/>
           )
