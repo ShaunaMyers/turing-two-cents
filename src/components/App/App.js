@@ -42,7 +42,7 @@ const App = () => {
 
   const handleRating = (rating, id) => {
     const updatedAdvice = advice.map( (tip) => {
-      if(tip.id === id) { 
+      if (tip.id === id) { 
         tip.rating = rating
       }
       return tip
@@ -59,6 +59,7 @@ const App = () => {
       setError('Please fill out title & description fields.')
       timer = setTimeout(() => setError(''), 5000)
     } else {
+      //do we need this??
       setError('')
     }
   } 
@@ -95,8 +96,9 @@ const App = () => {
         <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
-      {error === 'Please fill out title & description fields.' 
-      && <Error error={error}/>}
+      {/* Do we need this either? */}
+      {/* {error === 'Please fill out title & description fields.' 
+      && <Error error={error}/>} */}
       <Switch>
         <Route exact path='/' render={() => {
           return (
