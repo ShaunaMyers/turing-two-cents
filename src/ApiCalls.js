@@ -6,7 +6,6 @@ export const getTips = () => {
       }
       return response.json()
     })
-    // .catch(err => console.log(err))
 };
 
 export const addTip = (newTip) => {
@@ -16,15 +15,12 @@ export const addTip = (newTip) => {
       'content-type': 'application/json',
     },
     body: JSON.stringify(newTip)
-    // body: JSON.stringify({banana: 'chicken'})
   })
   .then(response => {
     if (!response.ok) {
       throw Error('Your new tip was not added, please try again')
     }
-    // return response.json()
   })
-  // .catch(err => console.log(err))
 };
 
 export const deleteTip = (id) => {
@@ -39,9 +35,7 @@ export const deleteTip = (id) => {
     if (!response.ok) {
       throw Error('Your delete request was not successful')
     }
-    // return response.json()
   })
-  // .catch(err => console.log(err))
 };
 
 export const updateRating = (rating, id) => {
@@ -56,6 +50,5 @@ export const updateRating = (rating, id) => {
     if (!response.ok) {
       throw Error('Your rating was not successful')
     }
-    // return response.json()
   })
 };
