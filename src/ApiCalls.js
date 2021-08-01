@@ -1,7 +1,11 @@
 export const getTips = () => {
   return fetch('https://turingtwocentapi.herokuapp.com/')
-    .then(response => response.json())
-    .catch(err => console.log(err))
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Oops, problem loading tips. Please refresh the page.')
+      }
+      return response.json()
+    })
 };
 
 export const addTip = (newTip) => {
@@ -12,8 +16,11 @@ export const addTip = (newTip) => {
     },
     body: JSON.stringify(newTip)
   })
-  .then(response => response.json())
-  .catch(err => console.log(err))
+  .then(response => {
+    if (!response.ok) {
+      throw Error('Your new tip was not added, please try again')
+    }
+  })
 };
 
 export const deleteTip = (id) => {
@@ -24,8 +31,11 @@ export const deleteTip = (id) => {
     },
     body: JSON.stringify({id})
   })
-  .then(response => response.json())
-  .catch(err => console.log(err))
+  .then(response => {
+    if (!response.ok) {
+      throw Error('Your delete request was not successful')
+    }
+  })
 };
 
 export const updateRating = (rating, id) => {
@@ -36,6 +46,9 @@ export const updateRating = (rating, id) => {
     },
     body: JSON.stringify({rating, id})
   })
-  .then(response => response.json())
-  .catch(err => console.log(err))
+  .then(response => {
+    if (!response.ok) {
+      throw Error('Your rating was not successful')
+    }
+  })
 };
