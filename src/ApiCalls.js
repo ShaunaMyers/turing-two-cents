@@ -53,9 +53,8 @@ export const updateRating = (rating, id) => {
   })
   .then(response => {
     if (!response.ok) {
-      throw Error(response.status)
+      throw Error('Your rating was not successful')
     }
-    return response.json()
+    // return response.json()
   })
-  .catch(err => console.log(err))
 };
