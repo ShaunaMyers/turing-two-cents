@@ -2,8 +2,9 @@ import React from 'react';
 import TipCard from '../TipCard/TipCard';
 import './TipJar.css';
 import PropTypes from 'prop-types';
+import Error from '../Error/Error'
 
-const TipJar = ({ tips, handleDelete, handleRating, error }) => {
+const TipJar = ({ tips, handleDelete, handleRating, error, selectedMod}) => {
   tips.sort((a, b) => b.date - a.date)
 
   const formatDate = (date) => {
@@ -32,9 +33,12 @@ const TipJar = ({ tips, handleDelete, handleRating, error }) => {
   });
 
     return (
-      <section className='tip-jar'>
-        {allTips}
-      </section>
+      <>
+        {!tips.length && !error && <Error error={`Oh no! All out of advice for Mod ${selectedMod}! Please contribute your tip to our tip jar`}/>}
+        <section className='tip-jar'>
+          {allTips}
+        </section>
+     </>
     )
 };
 

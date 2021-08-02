@@ -140,7 +140,7 @@ const App = () => {
               error !== 'Oops, problem loading tips. Please refresh the page.'  
               ? <>
                   <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-                  <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered} error={error}/>
+                  <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered} error={error} selectedMod={selectedMod}/>
                 </>
               : <Error error={error}/>        
             )
