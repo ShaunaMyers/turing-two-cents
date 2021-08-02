@@ -146,7 +146,6 @@ const App = () => {
               ? <>
                   <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
                   {evaluateLoaderAndError(filtered, selectedMod)}
-                  {/* <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered} error={error} selectedMod={selectedMod}/> */}
                 </>
               : <Error error={error}/>        
             )
