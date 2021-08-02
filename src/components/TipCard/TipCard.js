@@ -10,8 +10,6 @@ const TipCard = ({ rating, id, title, description, mod, date, handleDelete, hand
   const [cardId, setId] = useState('');
   const [timer, setTimer] = useState('');
 
-  // let timer;
-
   useEffect(() => {
     setTimer(setTimeout(() => setId(''), 1000))
   }, [cardId])
