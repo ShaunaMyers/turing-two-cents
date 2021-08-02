@@ -7,12 +7,13 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating, error}) => {
   
-  const [cardId, setId] = useState('')
+  const [cardId, setId] = useState('');
+  const [timer, setTimer] = useState('');
 
-  let timer;
+  // let timer;
 
   useEffect(() => {
-    timer = setTimeout(() => setId(''), 1000)
+    setTimer(setTimeout(() => setId(''), 1000))
   }, [cardId])
 
   const onRating = (value, id) => {

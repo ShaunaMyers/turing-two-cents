@@ -9,8 +9,8 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
     const [error, setError] = useState('');
-    const [message, setMessage] = useState('')
-    const [timer, setTimer] = useState('')
+    const [message, setMessage] = useState('');
+    const [timer, setTimer] = useState('');
 
     const onAddTip = (e) => {
         e.preventDefault();
@@ -19,12 +19,8 @@ const Form = ({ handleAddTip, validateInputs }) => {
             addTipFunctionality(formattedTitle, formattedDescription);
         } else if (title.length > 50) {
             setErrorFunctionality('Title is too long. Only 50 characters allowed')
-            // setError('Title is too long. Only 50 characters allowed')
-            // setTimer(setTimeout(() => setError(''), 3000))
         } else if (description.length > 500) {
             setErrorFunctionality('Description is too long. Only 500 characters allowed')
-            // setError('Description is too long. Only 500 characters allowed')
-            // setTimer(setTimeout(() => setError(''), 3000))
         }
         validateInputs(title, description);
         clearInputs();
@@ -76,5 +72,6 @@ Form.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     mod: PropTypes.number,
-    error: PropTypes.string
+    error: PropTypes.string,
+    title: PropTypes.string
   };
