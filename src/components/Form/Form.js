@@ -17,10 +17,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
         e.preventDefault();
         if (title && description && title.length < 51 && description.length < 501) {
             const {formattedTitle, formattedDescription} = cleanInputs([title, description])
-            handleAddTip({ title: formattedTitle, description: formattedDescription, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
-            setMessage('You have successfully submitted a tip card')
-            timer = setTimeout(() => setMessage(''), 3000)
-            setError('')
+            addTipFunctionality(formattedTitle, formattedDescription);
         } else if (title.length > 50) {
             setError('Title is too long. Only 50 characters allowed')
             timer = setTimeout(() => setError(''), 3000)
@@ -32,18 +29,12 @@ const Form = ({ handleAddTip, validateInputs }) => {
         clearInputs();
     }
 
-    // const cleanInputs = (inputs) => {
-    //     let formattedInputs = {formattedTitle: '', formattedDescription: ''}
-    //     Object.keys(formattedInputs).forEach((category, index) => {
-    //         formattedInputs[category] = inputs[index].split('').map(letter => {
-    //             if (letter === "'") {
-    //                 letter = "''"
-    //             }
-    //             return letter
-    //         }).join('')
-    //     })
-    //     return formattedInputs;
-    // }
+    const addTipFunctionality = (formattedTitle, formattedDescription) => {
+        handleAddTip({ title: formattedTitle, description: formattedDescription, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
+        setMessage('You have successfully submitted a tip card')
+        timer = setTimeout(() => setMessage(''), 3000)
+        setError('')
+    }
 
     const clearInputs = () => {
         setTitle('');
