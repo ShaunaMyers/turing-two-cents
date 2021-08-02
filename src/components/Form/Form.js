@@ -2,6 +2,7 @@ import React, { useState }from 'react';
 import './Form.css';
 import PropTypes from 'prop-types';
 import Error from '../Error/Error';
+import { cleanInputs } from '../../utils';
 
 const Form = ({ handleAddTip, validateInputs }) => {
     const [title, setTitle] = useState('');
