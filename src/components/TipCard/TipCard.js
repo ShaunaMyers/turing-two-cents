@@ -1,20 +1,28 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './TipCard.css';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating}) => {
+const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating, error}) => {
   
-  const [message, setMessage] = useState('');
-  
+  const [cardId, setId] = useState('')
+
   let timer;
 
+  useEffect(() => {
+    timer = setTimeout(() => setId(''), 1000)
+  }, [cardId])
+
   const onRating = (value, id) => {
-    handleRating(value, id);
-    setMessage('You have successfully rated this tip')
-    timer = setTimeout(() => setMessage(''), 3000)
+    setId(id)
+    handleRating(value, id)
+  }
+
+  const onDelete = () => {
+    setId(id)
+    handleDelete(id)
   }
 
   return (
@@ -33,10 +41,11 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
       placeholderSymbol={<FontAwesomeIcon icon={faStar} size="2x" className='filled-star' />}
       placeholderRating={rating}
       /></p>
-      {message && <p className="message-text">{message}</p>}
+      {(error.includes('rated') || error.includes('rating')) && cardId === id && <p className="message-text">{error}</p>}
       </div>
       <p>Date Submitted: {date}</p>
-      <button onClick={(e) => {handleDelete(id)}} className='delete'>Delete</button>
+      <button onClick={(e) => {onDelete()}} className='delete'>Delete</button>
+      {error === 'Error: Your delete request was not successful' && cardId === id && <p className="message-text">{error}</p>}
     </article>
   )
 }
@@ -51,5 +60,6 @@ Tip.propTypes = {
   rating: PropTypes.number,
   date: PropTypes.string,
   handleDelete: PropTypes.func,
-  message: PropTypes.string
+  message: PropTypes.string,
+  error: PropTypes.string
 }
