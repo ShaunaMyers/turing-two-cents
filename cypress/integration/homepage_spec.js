@@ -30,7 +30,7 @@ describe('Home Page', () => {
     cy
       .get('[href="/module/1"]')
       .click()
-      .get('.nav-header > :nth-child(6)')
+      .get('.right-nav > [href="/"]')
       .click()
       .get('.tip-jar')
       .children('.tip-card')
