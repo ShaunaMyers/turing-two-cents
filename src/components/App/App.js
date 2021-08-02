@@ -51,7 +51,6 @@ const App = () => {
     })
     setAdvice(updatedAdvice)
     updateRating(rating, id)
-    console.log(advice)
   }
   
   const validateInputs = (title, description) => {  
@@ -82,11 +81,8 @@ const App = () => {
   }
 
   const toggleClass = () => {
-    console.log('hi')
     if (modButton === "mod-button") {
-      console.log('they equal')
       setModButton("mod-button-show") 
-      console.log("mod btn show", modButton)
     } else {
       setModButton("mod-button");
     }
@@ -96,12 +92,14 @@ const App = () => {
     <main className='main'>
       <header className='nav-header'>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
+        <div className="right-nav">
         <FontAwesomeIcon onClick={toggleClass} className="fa-2x hamburger" icon={faBars}/>
         <NavLink to='/module/1' activeClassName='nav-button' className={modButton}>Module 1</NavLink>
         <NavLink to='/module/2' activeClassName='nav-button' className={modButton}>Module 2</NavLink>
         <NavLink to='/module/3' activeClassName='nav-button' className={modButton}>Module 3</NavLink>
         <NavLink to='/module/4' activeClassName='nav-button' className={modButton}>Module 4</NavLink>
         <NavLink exact to='/' activeClassName='nav-button' className={modButton}>Show All</NavLink>
+        </div>
       </header>
       <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/>
       {error === 'Please fill out title & description fields.' 
