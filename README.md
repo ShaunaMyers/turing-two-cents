@@ -1,19 +1,32 @@
 
-# *Turing Tip Jar*
+# [*Turing Tip Jar*](https://turingtipjar.herokuapp.com/)
 
 ### Table of Contents
 - [Overview](#overview-and-project-goals)
+- [Installation & Viewing](#installation-and-viewing)
 - [Learning Goals](#learning-goals)
+- [Technologies Used](#technologies-used)
 - [Functionality](#functionality)
 - [Future Additions](#future-additions)
-- [Installation & Viewing](#installation-and-viewing)
-- [Technologies Used](#technologies-used)
 - [Contributors](#contributors)
 
 ## Overview and Project Goals
 Welcome to the Turing Tip Jar - where students and alum can choose to simply peruse tips, or can leave tips to help others wade the trecherous Turing waters! 
 
 The goal of this Mod3 group [project](https://frontend.turing.edu/projects/module-3/stretch.html) was to stretch boundaries and branch out on our own to teach ourselves new tech. We chose to dive into the backend technologies. We built our own server using express and built a database using PostgreSQL. We deployed our database to Heroku and built our frontend using React.
+
+## Installation and Viewing 
+
+Our application is deployed to Heroku. You may view the live application [here](https://turingtipjar.herokuapp.com/)
+
+Our Express server is located in another repo [here](https://github.com/ShaunaMyers/turing-two-cents-api)
+
+To view our application on your local device:
+
+- Clone down this repository
+- Run `npm i` in your terminal
+- Run `npm start` in your terminal
+- To view Cypress tests open a separate tab in your terminal and run `npm run cypress`
 
 ### Learning Goals
 
@@ -26,7 +39,7 @@ To solidify and demonstrate the understanding of:
 - Building a frontend using React to display data
 
 
-### Technolgies Used
+### Technologies Used
 
 <p text-align="center"> 
     <img alt="React Badge" src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=flat-square)" />
@@ -43,7 +56,6 @@ To solidify and demonstrate the understanding of:
 #### View All Tips
 - A user may view all tip cards previously added<br>
 ![Demo browsing tips on main page](https://user-images.githubusercontent.com/74690897/127753461-248752da-56b1-4415-985c-3c59a85c1849.gif)
-
 
 
 
@@ -68,18 +80,6 @@ To solidify and demonstrate the understanding of:
 - *Add login functionality so that users can view their personalized dashboard (edit or delete their own tips)
 - *Add upvotes so that users can upvote and down vote tips once they are logged in 
 - *Share*: ability to share tips via social media or email 
-
-## Installation and Viewing 
-
-Our application is deployed to Heroku. You may view the live application [here]().
-
-To view our application on your local device:
-
-- Clone down this repository
-- Run `npm i` in your terminal
-- Run `npm start` in your terminal
-- To view Cypress tests open a separate tab in your terminal and run `npm run cypress`
-
 
 ### Want to Contribute?
 If you would like to contribute, please fork this repository and clone it down to your local machine. Once you've successfully implemented the changes in code necessary for your intended contribution without changing any of the current functionality of main, submit a pull request for authors to review the changes.
