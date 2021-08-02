@@ -193,7 +193,7 @@ describe('Home Page', () => {
       .get('.tip-jar > :nth-child(2)')
       .get(':nth-child(2) > .rating-details > :nth-child(2) > [style="display: inline-block; direction: ltr;"] > :nth-child(4) > :nth-child(1) > .svg-inline--fa > path')
       .click()
-      .get('p')
+      .get('.message-text')
       .contains('You have successfully rated this tip')
   })
 
@@ -224,7 +224,7 @@ describe('Home Page', () => {
       .get(':nth-child(1) > .delete')
       .click()
       .get('p')
-      .contains('Oh no! All out of advice! Please contribute your tip to our tip jar.')
+      .contains('Oh no! All out of advice! Please contribute your tip to our tip jar')
   })
 
 })
