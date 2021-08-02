@@ -5,7 +5,7 @@ import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRating, error}) => {
+const TipCard = ({ rating, id, title, description, mod, date, handleDelete, handleRating, error}) => {
   
   const [cardId, setId] = useState('');
   const [timer, setTimer] = useState('');
@@ -51,7 +51,7 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
   )
 }
 
-export default Tip;
+export default TipCard;
 
 Tip.propTypes = {
   id: PropTypes.number,

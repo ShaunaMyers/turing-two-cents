@@ -158,6 +158,7 @@ export default App
 App.propTypes = {
   advice: PropTypes.array,
   error: PropTypes.string,
+  timer: PropTypes.string,
   handleDelete: PropTypes.func,
   handleRating: PropTypes.func,
   validateInputs: PropTypes.func
