@@ -74,11 +74,13 @@ const App = () => {
     }
   } 
 
-  const evaluateLoaderAndError = () => {
+  const evaluateLoaderAndError = (filtered, selectedMod) => {
+    let tips;
+    !selectedMod ? tips = advice : tips = filtered
     if (!advice.length && !error) {
        return <Loader/>
     } else {
-      return <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={ advice } error = {error}/>
+      return <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={ tips } error = {error} selectedMod = {selectedMod}/>
     }
   }
 
@@ -143,7 +145,8 @@ const App = () => {
               error !== 'Oops, problem loading tips. Please refresh the page.'  
               ? <>
                   <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-                  <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered} error={error} selectedMod={selectedMod}/>
+                  {evaluateLoaderAndError(filtered, selectedMod)}
+                  {/* <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered} error={error} selectedMod={selectedMod}/> */}
                 </>
               : <Error error={error}/>        
             )
