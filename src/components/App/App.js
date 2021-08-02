@@ -30,7 +30,7 @@ const App = () => {
     if (!advice.length) {
       setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
     } 
-  }, []);
+  }, [advice.length]);
 
   const handleAddTip = (newTip) => {
     addTip(newTip)

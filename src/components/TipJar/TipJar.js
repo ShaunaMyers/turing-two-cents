@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import TipCard from '../TipCard/TipCard';
 import './TipJar.css';
 import PropTypes from 'prop-types';
-import Error from '../Error/Error'
 
 const TipJar = ({ tips, handleDelete, handleRating, error }) => {
   tips.sort((a, b) => b.date - a.date)
@@ -25,7 +24,6 @@ const TipJar = ({ tips, handleDelete, handleRating, error }) => {
           title={tip.title}
           description={tip.description}
           mod={tip.mod}
-          rating={tip.rating}
           date={tip.date}
           handleDelete={handleDelete}
           error={error}
