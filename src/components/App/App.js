@@ -50,7 +50,7 @@ const App = () => {
         return tip
       })
       setAdvice(updatedAdvice)
-      setError('You successfully rated a card')
+      setError('You have successfully rated this tip')
       setTimer(setTimeout(() => setError(''), 5000))
     })
     .catch(err => {
