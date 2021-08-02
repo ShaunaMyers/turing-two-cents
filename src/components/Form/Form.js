@@ -31,7 +31,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const addTipFunctionality = (formattedTitle, formattedDescription) => {
         handleAddTip({ title: formattedTitle, description: formattedDescription, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
         setMessage('You have successfully submitted a tip card')
-        timer = setTimeout(() => setMessage(''), 3000)
+        setTimer(setTimeout(() => setMessage(''), 4000))
         setError('')
     }
 
