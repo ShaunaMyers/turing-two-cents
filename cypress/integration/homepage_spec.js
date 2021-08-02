@@ -132,7 +132,7 @@ describe('Home Page', () => {
     cy
       .get('.new-tip-button')
       .click()
-      .get(':nth-child(3) > p')
+      .get('body')
       .contains('Please fill out title & description fields.')
   })
 
