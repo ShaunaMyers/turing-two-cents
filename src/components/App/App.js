@@ -88,6 +88,14 @@ const App = () => {
     })
   }
 
+  const doubledErrors = [
+    'Oops, problem loading tips. Please refresh the page.',
+    'Oh no! All out of advice! Please contribute your tip to our tip jar',
+    'Error: Your delete request was not successful',
+    'Error: Your rating was not successful',
+    'You have successfully rated this tip'
+  ]
+
   return (
     <main className='main'>
       <header className='nav-header'>
@@ -98,7 +106,8 @@ const App = () => {
         <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
         <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
       </header>
-      {error !== 'Oops, problem loading tips. Please refresh the page.' && <Error error={error}/>}
+      {/* {error !== 'Oops, problem loading tips. Please refresh the page.' && <Error error={error}/>} */}
+      {(!doubledErrors.includes(error)) && <Error error={error}/>}
       {error !== 'Oops, problem loading tips. Please refresh the page.'  
       ? <Switch>
           <Route exact path='/' render={() => {
