@@ -19,7 +19,13 @@ const App = () => {
   const fetchData = () => {
     setError('');
     getTips()
-    .then(result => setAdvice(result.rows))
+    .then(result => {
+      if (!result.rows.length) {
+        setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
+      } else {
+        setAdvice(result.rows)
+      }
+    })
     .catch(err => {
       setError('Oops, problem loading tips. Please refresh the page.')
     })
@@ -27,10 +33,7 @@ const App = () => {
 
   useEffect(() => {
     fetchData()
-    if (!advice.length) {
-      setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
-    } 
-  }, [advice.length]);
+  }, []);
 
   const handleAddTip = (newTip) => {
     addTip(newTip)
