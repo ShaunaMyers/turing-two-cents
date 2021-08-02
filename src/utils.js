@@ -10,3 +10,7 @@ export const cleanInputs = (inputs) => {
     })
     return formattedInputs;
 }
+
+export const formatDate = (date) => {
+    return new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })
+}
