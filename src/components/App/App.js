@@ -27,6 +27,9 @@ const App = () => {
 
   useEffect(() => {
     fetchData()
+    if (!advice.length) {
+      setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
+    } 
   }, []);
 
   const handleAddTip = (newTip) => {
@@ -93,7 +96,6 @@ const App = () => {
 
   const doubledErrors = [
     'Oops, problem loading tips. Please refresh the page.',
-    'Oh no! All out of advice! Please contribute your tip to our tip jar',
     'Error: Your delete request was not successful',
     'Error: Your rating was not successful',
     'You have successfully rated this tip'
