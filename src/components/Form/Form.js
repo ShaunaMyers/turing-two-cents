@@ -10,8 +10,7 @@ const Form = ({ handleAddTip, validateInputs }) => {
     const [mod, setMod] = useState(1);
     const [error, setError] = useState('');
     const [message, setMessage] = useState('')
-
-    let timer;
+    const [timer, setTimer] = useState('')
 
     const onAddTip = (e) => {
         e.preventDefault();
@@ -20,10 +19,10 @@ const Form = ({ handleAddTip, validateInputs }) => {
             addTipFunctionality(formattedTitle, formattedDescription);
         } else if (title.length > 50) {
             setError('Title is too long. Only 50 characters allowed')
-            timer = setTimeout(() => setError(''), 3000)
+            setTimer(setTimeout(() => setError(''), 3000))
         } else if (description.length > 500) {
             setError('Description is too long. Only 500 characters allowed')
-            timer = setTimeout(() => setError(''), 3000)
+            setTimer(setTimeout(() => setError(''), 3000))
         }
         validateInputs(title, description);
         clearInputs();
