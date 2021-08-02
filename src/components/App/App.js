@@ -77,6 +77,9 @@ const App = () => {
     deleteTip(id)
     .then(() => {
       const filtered = advice.filter(tip => tip.id !== id)
+      if (!filtered.length) {        
+        setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
+      }
       setAdvice(filtered)
     })
     .catch(err => {
@@ -101,8 +104,8 @@ const App = () => {
           <Route exact path='/' render={() => {
             return (
               <>
-              <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-              {evaluateLoaderAndError()}
+                <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+                {evaluateLoaderAndError()}
               </>
             )
           }}/>
