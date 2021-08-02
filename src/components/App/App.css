@@ -116,4 +116,9 @@ a {
     cursor: pointer;
     transition: 500ms;
   }
+
+  .nav-button {
+    color: #15f0fc;
+    background-color: #056475;
+  }
 }
