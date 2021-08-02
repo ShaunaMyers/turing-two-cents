@@ -11,7 +11,8 @@ import PropTypes from 'prop-types';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
-  let timer;
+  const [timer, setTimer] = useState('')
+  // let timer;
 
   const fetchData = () => {
     setError('');
@@ -33,7 +34,7 @@ const App = () => {
     })
     .catch(err => {
       setError(`${err}`)
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
   }    
 
@@ -48,18 +49,18 @@ const App = () => {
       })
       setAdvice(updatedAdvice)
       setError('You successfully rated a card')
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
     .catch(err => {
       setError(`${err}`)
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
   }
   
   const validateInputs = (title, description) => {  
     if (!title || !description) {
       setError('Please fill out title & description fields.')
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     } else {
       setError('')
     }
@@ -81,7 +82,7 @@ const App = () => {
     })
     .catch(err => {
       setError(`${err}`)
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
   }
 
