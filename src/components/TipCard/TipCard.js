@@ -11,7 +11,7 @@ const TipCard = ({ rating, id, title, description, mod, date, handleDelete, hand
   const [timer, setTimer] = useState('');
 
   useEffect(() => {
-    setTimer(setTimeout(() => setId(''), 1000))
+    setTimer(setTimeout(() => setId(''), 4000))
   }, [cardId])
 
   const onRating = (value, id) => {
