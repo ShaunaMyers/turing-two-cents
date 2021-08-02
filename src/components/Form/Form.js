@@ -2,46 +2,40 @@ import React, { useState }from 'react';
 import './Form.css';
 import PropTypes from 'prop-types';
 import Error from '../Error/Error';
+import { cleanInputs } from '../../utils';
 
 const Form = ({ handleAddTip, validateInputs }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [mod, setMod] = useState(1);
     const [error, setError] = useState('');
-    const [message, setMessage] = useState('')
-
-    let timer;
+    const [message, setMessage] = useState('');
+    const [timer, setTimer] = useState('');
 
     const onAddTip = (e) => {
         e.preventDefault();
         if (title && description && title.length < 51 && description.length < 501) {
             const {formattedTitle, formattedDescription} = cleanInputs([title, description])
-            handleAddTip({ title: formattedTitle, description: formattedDescription, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
-            setMessage('You have successfully submitted a tip card')
-            timer = setTimeout(() => setMessage(''), 3000)
-            setError('')
+            addTipFunctionality(formattedTitle, formattedDescription);
         } else if (title.length > 50) {
-            setError('Title is too long. Only 50 characters allowed')
-            timer = setTimeout(() => setError(''), 3000)
+            setErrorFunctionality('Title is too long. Only 50 characters allowed')
         } else if (description.length > 500) {
-            setError('Description is too long. Only 500 characters allowed')
-            timer = setTimeout(() => setError(''), 3000)
+            setErrorFunctionality('Description is too long. Only 500 characters allowed')
         }
         validateInputs(title, description);
         clearInputs();
     }
 
-    const cleanInputs = (inputs) => {
-        let formattedInputs = {formattedTitle: '', formattedDescription: ''}
-        Object.keys(formattedInputs).forEach((category, index) => {
-            formattedInputs[category] = inputs[index].split('').map(letter => {
-                if (letter === "'") {
-                    letter = "''"
-                }
-                return letter
-            }).join('')
-        })
-        return formattedInputs;
+    const addTipFunctionality = (formattedTitle, formattedDescription) => {
+        handleAddTip({ title: formattedTitle, description: formattedDescription, mod: parseInt(mod), rating: 0, date: Date.now(), id: Math.random() });
+        setMessage('You have successfully submitted a tip card')
+        setTimer(setTimeout(() => setMessage(''), 4000))
+        setError('')
+    }
+
+    const setErrorFunctionality = (message) => {
+        setError(message)
+        setTimer(setTimeout(() => setError(''), 3000))
     }
 
     const clearInputs = () => {
@@ -78,5 +72,6 @@ Form.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     mod: PropTypes.number,
-    error: PropTypes.string
+    error: PropTypes.string,
+    title: PropTypes.string
   };

@@ -13,8 +13,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
+  const [timer, setTimer] = useState('')
   const [modButton, setModButton] = useState("mod-button");
-  let timer;
 
   const fetchData = () => {
     setError('');
@@ -36,7 +36,7 @@ const App = () => {
     })
     .catch(err => {
       setError(`${err}`)
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
   }    
 
@@ -51,18 +51,18 @@ const App = () => {
       })
       setAdvice(updatedAdvice)
       setError('You have successfully rated this tip')
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
     .catch(err => {
       setError(`${err}`)
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
   }
   
   const validateInputs = (title, description) => {  
     if (!title || !description) {
       setError('Please fill out title & description fields.')
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     } else {
       setError('')
     }
@@ -87,7 +87,7 @@ const App = () => {
     })
     .catch(err => {
       setError(`${err}`)
-      timer = setTimeout(() => setError(''), 5000)
+      setTimer(setTimeout(() => setError(''), 5000))
     })
   }
 
@@ -158,6 +158,7 @@ export default App
 App.propTypes = {
   advice: PropTypes.array,
   error: PropTypes.string,
+  timer: PropTypes.string,
   handleDelete: PropTypes.func,
   handleRating: PropTypes.func,
   validateInputs: PropTypes.func
