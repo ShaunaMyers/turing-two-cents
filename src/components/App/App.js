@@ -7,12 +7,14 @@ import Loader from '../Loader/Loader';
 import './App.css';
 import { Route, NavLink, Switch, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
   const [advice, setAdvice] = useState([]);
   const [error, setError] = useState('');
   const [timer, setTimer] = useState('')
-  // let timer;
+  const [modButton, setModButton] = useState("mod-button");
 
   const fetchData = () => {
     setError('');
@@ -78,6 +80,9 @@ const App = () => {
     deleteTip(id)
     .then(() => {
       const filtered = advice.filter(tip => tip.id !== id)
+      if (!filtered.length) {        
+        setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
+      }
       setAdvice(filtered)
     })
     .catch(err => {
@@ -86,24 +91,43 @@ const App = () => {
     })
   }
 
+  const doubledErrors = [
+    'Oops, problem loading tips. Please refresh the page.',
+    'Oh no! All out of advice! Please contribute your tip to our tip jar',
+    'Error: Your delete request was not successful',
+    'Error: Your rating was not successful',
+    'You have successfully rated this tip'
+  ]
+
+  const toggleClass = () => {
+    if (modButton === "mod-button") {
+      setModButton("mod-button-show") 
+    } else {
+      setModButton("mod-button");
+    }
+  }
+
   return (
     <main className='main'>
       <header className='nav-header'>
         <Link to='/'><h1>Turing Tip Jar</h1></Link>
-        <NavLink to='/module/1' activeClassName='nav-button' className='mod-button'>Module 1</NavLink>
-        <NavLink to='/module/2' activeClassName='nav-button' className='mod-button'>Module 2</NavLink>
-        <NavLink to='/module/3' activeClassName='nav-button' className='mod-button'>Module 3</NavLink>
-        <NavLink to='/module/4' activeClassName='nav-button' className='mod-button'>Module 4</NavLink>
-        <NavLink exact to='/' activeClassName='nav-button' className='mod-button'>Show All</NavLink>
+        <div className="right-nav">
+        <FontAwesomeIcon onClick={toggleClass} className="fa-2x hamburger" icon={faBars}/>
+        <NavLink to='/module/1' activeClassName='nav-button' className={modButton}>Module 1</NavLink>
+        <NavLink to='/module/2' activeClassName='nav-button' className={modButton}>Module 2</NavLink>
+        <NavLink to='/module/3' activeClassName='nav-button' className={modButton}>Module 3</NavLink>
+        <NavLink to='/module/4' activeClassName='nav-button' className={modButton}>Module 4</NavLink>
+        <NavLink exact to='/' activeClassName='nav-button' className={modButton}>Show All</NavLink>
+        </div>
       </header>
-      {error !== 'Oops, problem loading tips. Please refresh the page.' && <Error error={error}/>}
+      {(!doubledErrors.includes(error)) && <Error error={error}/>}
       {error !== 'Oops, problem loading tips. Please refresh the page.'  
       ? <Switch>
           <Route exact path='/' render={() => {
             return (
               <>
-              <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-              {evaluateLoaderAndError()}
+                <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+                {evaluateLoaderAndError()}
               </>
             )
           }}/>

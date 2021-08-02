@@ -32,7 +32,7 @@ const TipJar = ({ tips, handleDelete, handleRating, error }) => {
 
     return (
       <>
-        {!tips.length && <Error error={'Oh no! All out of advice! Please contribute your tip to our tip jar.'}/>}
+        {!tips.length && <Error error={'Oh no! All out of advice! Please contribute your tip to our tip jar'}/>}
         <section className='tip-jar'>
           {allTips}
         </section>
