@@ -19,7 +19,13 @@ const App = () => {
   const fetchData = () => {
     setError('');
     getTips()
-    .then(result => setAdvice(result.rows))
+    .then(result => {
+      if (!result.rows.length) {
+        setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
+      } else {
+        setAdvice(result.rows)
+      }
+    })
     .catch(err => {
       setError('Oops, problem loading tips. Please refresh the page.')
     })
@@ -93,7 +99,6 @@ const App = () => {
 
   const doubledErrors = [
     'Oops, problem loading tips. Please refresh the page.',
-    'Oh no! All out of advice! Please contribute your tip to our tip jar',
     'Error: Your delete request was not successful',
     'Error: Your rating was not successful',
     'You have successfully rated this tip'
@@ -138,7 +143,7 @@ const App = () => {
               error !== 'Oops, problem loading tips. Please refresh the page.'  
               ? <>
                   <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-                  <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered} error={error}/>
+                  <TipJar handleRating={handleRating} handleDelete={handleDelete} tips={filtered} error={error} selectedMod={selectedMod}/>
                 </>
               : <Error error={error}/>        
             )

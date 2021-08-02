@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Error from '../Error/Error'
 import { formatDate } from '../../utils';
 
-const TipJar = ({ tips, handleDelete, handleRating, error }) => {
+const TipJar = ({ tips, handleDelete, handleRating, error, selectedMod}) => {
   tips.sort((a, b) => b.date - a.date)
 
   const formattedTips = tips.map(tip => {
@@ -22,7 +22,6 @@ const TipJar = ({ tips, handleDelete, handleRating, error }) => {
           title={tip.title}
           description={tip.description}
           mod={tip.mod}
-          rating={tip.rating}
           date={tip.date}
           handleDelete={handleDelete}
           error={error}
@@ -32,11 +31,11 @@ const TipJar = ({ tips, handleDelete, handleRating, error }) => {
 
     return (
       <>
-        {!tips.length && <Error error={'Oh no! All out of advice! Please contribute your tip to our tip jar'}/>}
+        {!tips.length && !error && <Error error={`Oh no! All out of advice for Mod ${selectedMod}! Please contribute your tip to our tip jar`}/>}
         <section className='tip-jar'>
           {allTips}
         </section>
-      </>
+     </>
     )
 };
 
@@ -45,5 +44,7 @@ export default TipJar;
 TipJar.propTypes = {
   tips: PropTypes.array,
   handleDelete: PropTypes.func,
-  error: PropTypes.string
+  handleRating: PropTypes.func,
+  error: PropTypes.string,
+  selectedMod: PropTypes.number
 }
