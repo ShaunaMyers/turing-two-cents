@@ -12,7 +12,7 @@ const Tip = ({ rating, id, title, description, mod, date, handleDelete, handleRa
   let timer;
 
   useEffect(() => {
-    timer = setTimeout(() => setId(''), 1000)
+    timer = setTimeout(() => setId(''), 4000)
   }, [cardId])
 
   const onRating = (value, id) => {
