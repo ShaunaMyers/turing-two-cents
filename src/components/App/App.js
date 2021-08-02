@@ -50,7 +50,7 @@ const App = () => {
         return tip
       })
       setAdvice(updatedAdvice)
-      setError('You successfully rated a card')
+      setError('You have successfully rated this tip')
       timer = setTimeout(() => setError(''), 5000)
     })
     .catch(err => {
@@ -80,6 +80,9 @@ const App = () => {
     deleteTip(id)
     .then(() => {
       const filtered = advice.filter(tip => tip.id !== id)
+      if (!filtered.length) {        
+        setError('Oh no! All out of advice! Please contribute your tip to our tip jar')
+      }
       setAdvice(filtered)
     })
     .catch(err => {
@@ -87,6 +90,14 @@ const App = () => {
       timer = setTimeout(() => setError(''), 5000)
     })
   }
+
+  const doubledErrors = [
+    'Oops, problem loading tips. Please refresh the page.',
+    'Oh no! All out of advice! Please contribute your tip to our tip jar',
+    'Error: Your delete request was not successful',
+    'Error: Your rating was not successful',
+    'You have successfully rated this tip'
+  ]
 
   const toggleClass = () => {
     if (modButton === "mod-button") {
@@ -109,14 +120,14 @@ const App = () => {
         <NavLink exact to='/' activeClassName='nav-button' className={modButton}>Show All</NavLink>
         </div>
       </header>
-      {error !== 'Oops, problem loading tips. Please refresh the page.' && <Error error={error}/>}
+      {(!doubledErrors.includes(error)) && <Error error={error}/>}
       {error !== 'Oops, problem loading tips. Please refresh the page.'  
       ? <Switch>
           <Route exact path='/' render={() => {
             return (
               <>
-              <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-              {evaluateLoaderAndError()}
+                <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+                {evaluateLoaderAndError()}
               </>
             )
           }}/>
