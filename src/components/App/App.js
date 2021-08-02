@@ -142,12 +142,10 @@ const App = () => {
             let selectedMod =  parseInt(match.params.num)
             let filtered = advice.filter(tip => tip.mod === selectedMod)
             return (
-              error !== 'Oops, problem loading tips. Please refresh the page.'  
-              ? <>
-                  <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
-                  {evaluateLoaderAndError(filtered, selectedMod)}
-                </>
-              : <Error error={error}/>        
+              <>
+                <Form handleAddTip={handleAddTip} validateInputs={validateInputs}/> 
+                {evaluateLoaderAndError(filtered, selectedMod)}
+              </>
             )
           }}/>
           <Route path='/' render={() => 
