@@ -51,7 +51,7 @@ const TipCard = ({ rating, id, title, description, mod, date, handleDelete, hand
 
 export default TipCard;
 
-Tip.propTypes = {
+TipCard.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
   description: PropTypes.string,
