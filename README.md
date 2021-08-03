@@ -74,6 +74,7 @@ To solidify and demonstrate the understanding of:
  
 #### Mobile View/Responsive
 - Site is responsive and will change layouts across desktop, tablet, and phone screens<br>
+- ![Demo responsive design for site](https://media.giphy.com/media/FdaSCKVieZWmB2etYN/giphy.gif) 
 
 
 ## Future Additions
