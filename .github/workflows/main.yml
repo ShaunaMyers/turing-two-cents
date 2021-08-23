@@ -1,21 +1,8 @@
-name: Deploy and Cypress Tests
+name: Cypress Tests
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "turingtipjar" #Must be unique in Heroku
-          heroku_email: "shaunamyers26@gmail.com"
-          
   cypress-run:
     runs-on: ubuntu-latest
     steps:
