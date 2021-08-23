@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy and Cypress Tests
 
 on:
   push:
@@ -15,3 +15,16 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "turingtipjar" #Must be unique in Heroku
           heroku_email: "shaunamyers26@gmail.com"
+          
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
